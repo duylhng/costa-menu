@@ -7,6 +7,18 @@ const Menu = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const menuCategories = [
     {
+      category: "Specials",
+      items: [
+        { name: "Hamburger Deal (w/ Lot + $9.00)", description: "4 burgers, $3 chips, 1.25L drink", price: "$28.00" },
+        { name: "Hawaiian Burger Deal", description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy", price: "$30.00" },
+        { name: "Fish Deal", description: "4 cods, $3 chips, 1.25L drink", price: "$28.00" },
+        { name: "Seafood Basket", description: "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon", price: "$13.50" },
+        { name: "Special for Two", description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops", price: "$23.50" },
+        { name: "Chicken Deal", description: "1 whole chicken, $3 chips and 1.25L drink", price: "$21.00" },
+        { name: "Fish & Chips Salad Plate", description: "", price: "$12.50" },
+      ],
+    },
+    {
       category: "Snacks",
       items: [
         { name: "Kabana", description: "", price: "$3.20" },
