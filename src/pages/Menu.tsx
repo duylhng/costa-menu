@@ -28,14 +28,6 @@ const Menu = () => {
       ],
     },
     {
-      category: "Chicken",
-      items: [
-        { name: "Whole", description: "", price: "$14.00" },
-        { name: "Half", description: "", price: "$8.00" },
-        { name: "Quarter", description: "", price: "$5.00" },
-      ],
-    },
-    {
       category: "Snack Deals",
       items: [
         { name: "Chicken Nuggets", description: "5 for $3.50 ($0.70 each)", price: "$3.50" },
@@ -97,6 +89,14 @@ const Menu = () => {
         { name: "Pineapple Fritter", description: "", price: "$1.40" },
         { name: "Pork Sausage", description: "", price: "$3.20" },
         { name: "Ham & Cheese Potato Scallop", description: "", price: "$3.00" },
+      ],
+    },
+    {
+      category: "Chicken",
+      items: [
+        { name: "Whole", description: "", price: "$14.00" },
+        { name: "Half", description: "", price: "$8.00" },
+        { name: "Quarter", description: "", price: "$5.00" },
       ],
     },
     {
