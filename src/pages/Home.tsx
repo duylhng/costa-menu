@@ -47,16 +47,20 @@ const Home = () => {
               </div>
               <div className="space-y-2 text-foreground/80">
                 <div className="flex justify-between">
-                  <span>Monday - Friday</span>
-                  <span className="font-medium">5:00pm - 9:00pm</span>
+                  <span>Monday</span>
+                  <span className="font-medium">12:00pm - 7:30pm</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Tuesday - Friday</span>
+                  <span className="font-medium">10:30am - 7:30pm</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Saturday</span>
-                  <span className="font-medium">12:00pm - 9:00pm</span>
+                  <span className="font-medium">10:30am - 7:00pm</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
-                  <span className="font-medium">12:00pm - 8:00pm</span>
+                  <span className="font-medium">Closed</span>
                 </div>
               </div>
             </div>

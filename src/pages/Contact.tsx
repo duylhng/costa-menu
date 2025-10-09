@@ -46,9 +46,10 @@ const Contact = () => {
             <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-3">Opening Hours</h3>
             <div className="text-muted-foreground space-y-1">
-              <p>Mon-Fri: 5pm - 9pm</p>
-              <p>Saturday: 12pm - 9pm</p>
-              <p>Sunday: 12pm - 8pm</p>
+              <p>Mon: 12pm - 7:30pm</p>
+              <p>Tue-Fri: 10:30am - 7:30pm</p>
+              <p>Sat: 10:30am - 7pm</p>
+              <p>Sun: Closed</p>
             </div>
           </Card>
         </div>
