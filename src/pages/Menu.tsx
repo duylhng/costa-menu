@@ -11,7 +11,9 @@ import specialForTwoImg from "@/assets/special-for-two.jpg";
 import chickenDealImg from "@/assets/chicken-deal.jpg";
 import fishChipsSaladImg from "@/assets/fish-chips-salad.jpg";
 import codFishImg from "@/assets/cod-fish.jpg";
+import hokiFishImg from "@/assets/hoki-fish.jpg";
 import snapperFishImg from "@/assets/snapper-fish.jpg";
+import barramundiFishImg from "@/assets/barramundi-fish.jpg";
 import hamburgerLotImg from "@/assets/hamburger-lot.jpg";
 import steakBurgerImg from "@/assets/steak-burger.jpg";
 import chickenBurgerImg from "@/assets/chicken-burger.jpg";
@@ -51,9 +53,9 @@ const Menu = () => {
       category: "Fish (Crumbed / Battered)",
       items: [
         { name: "Cod", description: "Add grilled +$1", price: "$6.00", image: codFishImg },
-        { name: "Hoki", description: "Add grilled +$1", price: "$6.00" },
+        { name: "Hoki", description: "Add grilled +$1", price: "$6.00", image: hokiFishImg },
         { name: "Snapper", description: "Add grilled +$1", price: "$8.50", image: snapperFishImg },
-        { name: "Barramundi", description: "Add grilled +$1", price: "$8.00" },
+        { name: "Barramundi", description: "Add grilled +$1", price: "$8.00", image: barramundiFishImg },
       ],
     },
     {
