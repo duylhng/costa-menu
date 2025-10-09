@@ -1,9 +1,16 @@
 import { Card } from "@/components/ui/card";
+import calamariImg from "@/assets/calamari.jpg";
+import fishChipsImg from "@/assets/fish-chips-plate.jpg";
+import prawnsImg from "@/assets/prawns.jpg";
+import dish1 from "@/assets/dish-1.jpg";
+import dish2 from "@/assets/dish-2.jpg";
+import dish3 from "@/assets/dish-3.jpg";
 
 const Menu = () => {
   const menuCategories = [
     {
       category: "Snacks",
+      image: dish1,
       items: [
         { name: "Kabana", description: "", price: "$3.20" },
         { name: "Cheese Kabana", description: "", price: "$3.20" },
@@ -26,6 +33,7 @@ const Menu = () => {
     },
     {
       category: "Burgers & Sandwiches",
+      image: dish2,
       items: [
         { name: "Hamburger", description: "", price: "$6.00" },
         { name: "Hamburger w/ Lot", description: "", price: "$8.50" },
@@ -39,6 +47,7 @@ const Menu = () => {
     },
     {
       category: "Hot Rolls",
+      image: dish3,
       items: [
         { name: "Chicken Gravy", description: "", price: "$6.00" },
         { name: "Chicken Mayo", description: "", price: "$6.00" },
@@ -52,6 +61,7 @@ const Menu = () => {
     },
     {
       category: "Fish (Crumbed / Battered)",
+      image: fishChipsImg,
       items: [
         { name: "Cod", description: "", price: "$6.00" },
         { name: "Hoki", description: "", price: "$6.00" },
@@ -64,6 +74,7 @@ const Menu = () => {
     },
     {
       category: "Snack Deals",
+      image: calamariImg,
       items: [
         { name: "Chicken Nuggets", description: "5 pieces", price: "$3.50" },
         { name: "Chicken Chips", description: "5 pieces", price: "$2.50" },
@@ -80,6 +91,7 @@ const Menu = () => {
     },
     {
       category: "Minimum Hot Chips",
+      image: prawnsImg,
       items: [
         { name: "Chips", description: "", price: "$3.00" },
         { name: "Beer Battered Chips", description: "", price: "$3.00" },
@@ -97,38 +109,51 @@ const Menu = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 px-4">
-      <div className="container mx-auto max-w-5xl">
+    <div className="min-h-screen py-12 px-4">
+      <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Our Menu</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">Our Menu</h1>
+          <p className="text-lg text-muted-foreground">
             Fresh fish and seafood, cooked to order daily
           </p>
         </div>
 
         {/* Menu Categories */}
-        <div className="space-y-16">
+        <div className="space-y-12">
           {menuCategories.map((category) => (
-            <div key={category.category}>
-              <h2 className="text-3xl font-bold mb-8 text-primary border-b-2 border-primary/20 pb-3">
-                {category.category}
-              </h2>
+            <div key={category.category} className="space-y-4">
+              {/* Category Header with Image */}
+              <div className="flex items-center gap-4 mb-6">
+                {category.image && (
+                  <img 
+                    src={category.image} 
+                    alt={category.category}
+                    className="w-16 h-16 rounded-lg object-cover shadow-md"
+                  />
+                )}
+                <h2 className="text-2xl md:text-3xl font-bold text-primary">
+                  {category.category}
+                </h2>
+              </div>
 
-              <div className="space-y-6">
+              {/* Menu Items Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {category.items.map((item, index) => (
                   <Card
                     key={index}
-                    className="p-6 hover:shadow-lg transition-shadow duration-300"
+                    className="p-4 hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
                   >
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold mb-2">{item.name}</h3>
-                        <p className="text-muted-foreground">
-                          {item.description}
-                        </p>
+                    <div className="flex justify-between items-start gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base font-semibold mb-1 truncate">{item.name}</h3>
+                        {item.description && (
+                          <p className="text-sm text-muted-foreground">
+                            {item.description}
+                          </p>
+                        )}
                       </div>
-                      <div className="text-2xl font-bold text-primary whitespace-nowrap">
+                      <div className="text-lg font-bold text-primary whitespace-nowrap">
                         {item.price}
                       </div>
                     </div>
@@ -140,8 +165,8 @@ const Menu = () => {
         </div>
 
         {/* Footer Note */}
-        <div className="mt-16 text-center p-8 bg-secondary/50 rounded-xl">
-          <p className="text-lg text-muted-foreground">
+        <div className="mt-12 text-center p-6 bg-secondary/50 rounded-lg">
+          <p className="text-sm text-muted-foreground">
             * Prices subject to change. Please call to confirm current pricing.
           </p>
         </div>
