@@ -10,7 +10,6 @@ const Menu = () => {
   const menuCategories = [
     {
       category: "Snacks",
-      image: dish1,
       items: [
         { name: "Kabana", description: "", price: "$3.20" },
         { name: "Cheese Kabana", description: "", price: "$3.20" },
@@ -33,7 +32,6 @@ const Menu = () => {
     },
     {
       category: "Burgers & Sandwiches",
-      image: dish2,
       items: [
         { name: "Hamburger", description: "", price: "$6.00" },
         { name: "Hamburger w/ Lot", description: "", price: "$8.50" },
@@ -47,7 +45,6 @@ const Menu = () => {
     },
     {
       category: "Hot Rolls",
-      image: dish3,
       items: [
         { name: "Chicken Gravy", description: "", price: "$6.00" },
         { name: "Chicken Mayo", description: "", price: "$6.00" },
@@ -91,7 +88,6 @@ const Menu = () => {
     },
     {
       category: "Minimum Hot Chips",
-      image: prawnsImg,
       items: [
         { name: "Chips", description: "", price: "$3.00" },
         { name: "Beer Battered Chips", description: "", price: "$3.00" },
