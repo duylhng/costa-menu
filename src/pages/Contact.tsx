@@ -64,7 +64,7 @@ const Contact = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Family Takeaway Location"
+              title="Costa's Takeaway Location"
             />
           </div>
         </Card>
