@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, Clock } from "lucide-react";
-import heroImage from "@/assets/hero-dish.jpg";
+import heroImage from "@/assets/hero-fish-chips.jpg";
 
 const Home = () => {
   return (
@@ -17,12 +17,12 @@ const Home = () => {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
-            Authentic Flavours,
+            Fresh Fish & Chips,
             <br />
-            Made with Love
+            Cooked to Perfection
           </h1>
           <p className="text-xl md:text-2xl text-white/95 mb-8 drop-shadow">
-            Your favourite takeaway, made fresh daily
+            Traditional fish and chips, made fresh daily
           </p>
           <Link to="/menu">
             <Button
@@ -85,11 +85,11 @@ const Home = () => {
       <section className="py-20 px-4 text-center">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-4xl font-bold mb-6">
-            Discover Our Delicious Menu
+            Discover Our Fresh Seafood Menu
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            From traditional favourites to exciting new dishes, we have
-            something for everyone
+            From classic fish and chips to delicious seafood favourites, 
+            all cooked fresh to order
           </p>
           <Link to="/menu">
             <Button

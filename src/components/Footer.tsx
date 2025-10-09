@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="text-center space-y-2">
           <p className="text-2xl font-bold text-primary">Costa's Takeaway</p>
           <p className="text-muted-foreground">
-            Authentic flavours, made with love
+            Fresh fish & chips, cooked to perfection
           </p>
           <p className="text-sm text-muted-foreground pt-4">
             © {currentYear} Costa's Takeaway. All rights reserved.

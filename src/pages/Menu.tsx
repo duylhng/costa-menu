@@ -3,92 +3,127 @@ import { Card } from "@/components/ui/card";
 const Menu = () => {
   const menuCategories = [
     {
-      category: "Appetizers",
+      category: "Fish",
       items: [
         {
-          name: "Spring Rolls",
-          description: "Crispy vegetable rolls served with sweet chili sauce",
-          price: "$8.90",
+          name: "Flake (Shark)",
+          description: "Premium Australian flake, battered and fried to golden perfection",
+          price: "$12.50",
         },
         {
-          name: "Chicken Satay",
-          description: "Grilled chicken skewers with peanut sauce",
-          price: "$12.90",
+          name: "Barramundi",
+          description: "Fresh barramundi fillet in our signature batter",
+          price: "$14.90",
         },
         {
-          name: "Prawn Dumplings",
-          description: "Steamed dumplings filled with fresh prawns",
-          price: "$14.50",
-        },
-      ],
-    },
-    {
-      category: "Main Courses",
-      items: [
-        {
-          name: "Pad Thai",
-          description: "Classic Thai stir-fried noodles with prawns, peanuts, and egg",
-          price: "$18.90",
+          name: "Flathead",
+          description: "Local flathead, lightly battered and crispy",
+          price: "$13.90",
         },
         {
-          name: "Beef Rendang",
-          description: "Slow-cooked beef in aromatic spices and coconut milk",
-          price: "$22.50",
-        },
-        {
-          name: "Chicken Teriyaki",
-          description: "Grilled chicken glazed with teriyaki sauce, served with rice",
-          price: "$19.90",
-        },
-        {
-          name: "Green Curry",
-          description: "Thai green curry with vegetables and your choice of protein",
-          price: "$20.90",
-        },
-        {
-          name: "Mongolian Lamb",
-          description: "Stir-fried lamb with spring onions in a savory sauce",
-          price: "$23.90",
-        },
-      ],
-    },
-    {
-      category: "Rice & Noodles",
-      items: [
-        {
-          name: "Fried Rice",
-          description: "Classic fried rice with egg and vegetables",
-          price: "$12.90",
-        },
-        {
-          name: "Singapore Noodles",
-          description: "Stir-fried rice noodles with curry powder and vegetables",
+          name: "Grilled Fish",
+          description: "Your choice of fish, grilled with lemon and herbs",
           price: "$15.90",
         },
+      ],
+    },
+    {
+      category: "Fish & Chips Packs",
+      items: [
         {
-          name: "Hokkien Noodles",
-          description: "Thick egg noodles stir-fried with vegetables and sauce",
-          price: "$16.50",
+          name: "Standard Pack",
+          description: "1 piece of fish with chips",
+          price: "$14.90",
+        },
+        {
+          name: "Family Pack",
+          description: "4 pieces of fish with large chips",
+          price: "$52.00",
+        },
+        {
+          name: "Deluxe Pack",
+          description: "2 pieces of fish, 6 prawns, calamari rings, and large chips",
+          price: "$38.50",
         },
       ],
     },
     {
-      category: "Sides",
+      category: "Seafood",
       items: [
         {
-          name: "Steamed Rice",
-          description: "Fluffy jasmine rice",
-          price: "$3.50",
+          name: "Calamari Rings",
+          description: "Tender squid rings in a crispy golden coating",
+          price: "$11.90",
+        },
+        {
+          name: "Prawn Cutlets (6 pcs)",
+          description: "Crumbed prawns, fried until golden",
+          price: "$13.50",
+        },
+        {
+          name: "Scallops (4 pcs)",
+          description: "Plump scallops in crispy batter",
+          price: "$9.90",
+        },
+        {
+          name: "Seafood Basket",
+          description: "Fish, calamari, scallops, and prawns with chips",
+          price: "$24.90",
+        },
+      ],
+    },
+    {
+      category: "Chips & Sides",
+      items: [
+        {
+          name: "Minimum Chips",
+          description: "Perfect portion for one",
+          price: "$4.50",
+        },
+        {
+          name: "Regular Chips",
+          description: "Golden, crispy chips",
+          price: "$6.50",
+        },
+        {
+          name: "Large Chips",
+          description: "Great for sharing",
+          price: "$9.00",
+        },
+        {
+          name: "Potato Cakes (2)",
+          description: "Crispy potato scallops",
+          price: "$4.00",
+        },
+        {
+          name: "Coleslaw",
+          description: "Fresh, creamy coleslaw",
+          price: "$5.50",
         },
         {
           name: "Garden Salad",
-          description: "Fresh mixed greens with house dressing",
+          description: "Mixed greens with house dressing",
           price: "$7.90",
         },
+      ],
+    },
+    {
+      category: "Extras & Sauces",
+      items: [
         {
-          name: "Prawn Crackers",
-          description: "Crispy prawn crackers",
-          price: "$4.50",
+          name: "Tartar Sauce",
+          description: "House-made tartar sauce",
+          price: "$1.50",
+        },
+        {
+          name: "Lemon",
+          description: "Fresh lemon wedges",
+          price: "$0.50",
+        },
+        {
+          name: "Tomato Sauce / Vinegar",
+          description: "Classic accompaniments",
+          price: "Free",
         },
       ],
     },
@@ -97,18 +132,13 @@ const Menu = () => {
       items: [
         {
           name: "Soft Drinks",
-          description: "Coke, Sprite, Fanta",
+          description: "Coke, Sprite, Fanta, Lemon Squash",
           price: "$3.50",
         },
         {
-          name: "Thai Iced Tea",
-          description: "Sweet and creamy Thai tea over ice",
-          price: "$5.90",
-        },
-        {
-          name: "Fresh Juice",
-          description: "Orange, apple, or tropical",
-          price: "$6.50",
+          name: "Bottled Water",
+          description: "600ml",
+          price: "$3.00",
         },
       ],
     },
@@ -121,7 +151,7 @@ const Menu = () => {
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">Our Menu</h1>
           <p className="text-xl text-muted-foreground">
-            All dishes are prepared fresh to order
+            Fresh fish and seafood, cooked to order daily
           </p>
         </div>
 
