@@ -18,9 +18,9 @@ const Contact = () => {
             <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-3">Our Location</h3>
             <p className="text-muted-foreground leading-relaxed">
-              123 Main Street
+              Shop 3, 153 Smith Rd
               <br />
-              Suburb Name, NSW 2000
+              Woodridge, QLD 4114
               <br />
               Australia
             </p>
@@ -34,7 +34,7 @@ const Contact = () => {
               href="tel:+61234567890"
               className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors block"
             >
-              0405353467
+              0405 353 467
             </a>
             <p className="text-muted-foreground mt-2">Available during opening hours</p>
           </Card>
