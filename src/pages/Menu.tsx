@@ -5,12 +5,19 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import fishChipsPlate from "@/assets/fish-chips-plate.jpg";
 import prawnsImg from "@/assets/prawns.jpg";
-import calamariImg from "@/assets/calamari.jpg";
 import hamburgerDealImg from "@/assets/hamburger-deal.jpg";
 import hawaiianBurgerImg from "@/assets/hawaiian-burger.jpg";
 import specialForTwoImg from "@/assets/special-for-two.jpg";
 import chickenDealImg from "@/assets/chicken-deal.jpg";
 import fishChipsSaladImg from "@/assets/fish-chips-salad.jpg";
+import codFishImg from "@/assets/cod-fish.jpg";
+import snapperFishImg from "@/assets/snapper-fish.jpg";
+import hamburgerLotImg from "@/assets/hamburger-lot.jpg";
+import steakBurgerImg from "@/assets/steak-burger.jpg";
+import chickenBurgerImg from "@/assets/chicken-burger.jpg";
+import fishBurgerImg from "@/assets/fish-burger.jpg";
+import chickenGravyRollImg from "@/assets/chicken-gravy-roll.jpg";
+import hotDogImg from "@/assets/hot-dog.jpg";
 
 interface MenuItem {
   name: string;
@@ -43,9 +50,9 @@ const Menu = () => {
     {
       category: "Fish (Crumbed / Battered)",
       items: [
-        { name: "Cod", description: "Add grilled +$1", price: "$6.00" },
+        { name: "Cod", description: "Add grilled +$1", price: "$6.00", image: codFishImg },
         { name: "Hoki", description: "Add grilled +$1", price: "$6.00" },
-        { name: "Snapper", description: "Add grilled +$1", price: "$8.50" },
+        { name: "Snapper", description: "Add grilled +$1", price: "$8.50", image: snapperFishImg },
         { name: "Barramundi", description: "Add grilled +$1", price: "$8.00" },
       ],
     },
@@ -59,7 +66,7 @@ const Menu = () => {
         { name: "Fish Cocktails", description: "5 for $4.60 ($0.92 each)", price: "$4.60", popular: false },
         { name: "Prawn Cutlets", description: "5 for $6.00 ($1.20 each)", price: "$6.00", popular: false },
         { name: "Potato Scallops", description: "6 for $5.00 ($0.83 each)", price: "$5.00", popular: true },
-        { name: "Calamari Rings", description: "8 for $4.50 ($0.56 each)", price: "$4.50", popular: true, image: calamariImg },
+        { name: "Calamari Rings", description: "8 for $4.50 ($0.56 each)", price: "$4.50", popular: true },
         { name: "Seafood Bites", description: "5 for $4.30 ($0.86 each)", price: "$4.30", popular: false },
         { name: "Onion Rings", description: "4 for $1.50 ($0.38 each)", price: "$1.50", popular: false },
         { name: "Battered Mussels", description: "4 for $2.80 ($0.70 each)", price: "$2.80", popular: false },
@@ -69,22 +76,22 @@ const Menu = () => {
       category: "Burgers & Sandwiches",
       items: [
         { name: "Hamburger", description: "", price: "$6.00" },
-        { name: "Hamburger w/ Lot", description: "", price: "$8.50" },
-        { name: "Steak Burger", description: "", price: "$7.00" },
+        { name: "Hamburger w/ Lot", description: "", price: "$8.50", image: hamburgerLotImg },
+        { name: "Steak Burger", description: "", price: "$7.00", image: steakBurgerImg },
         { name: "Steak Burger w/ Lot", description: "", price: "$9.50" },
         { name: "Bacon & Egg Burger", description: "", price: "$6.00" },
-        { name: "Chicken Burger", description: "", price: "$6.50" },
-        { name: "Fish Burger", description: "", price: "$8.50" },
+        { name: "Chicken Burger", description: "", price: "$6.50", image: chickenBurgerImg },
+        { name: "Fish Burger", description: "", price: "$8.50", image: fishBurgerImg },
         { name: "Chicken Salad Sandwich", description: "", price: "$5.50" },
       ],
     },
     {
       category: "Hot Rolls",
       items: [
-        { name: "Chicken Gravy", description: "", price: "$6.00" },
+        { name: "Chicken Gravy", description: "", price: "$6.00", image: chickenGravyRollImg },
         { name: "Chicken Mayo", description: "", price: "$6.00" },
         { name: "Steak Gravy", description: "", price: "$6.50" },
-        { name: "Hot Dog", description: "", price: "$4.00" },
+        { name: "Hot Dog", description: "", price: "$4.00", image: hotDogImg },
         { name: "Hot Dog & Cheese", description: "", price: "$4.50" },
         { name: "Hot Dog w/ Lot", description: "", price: "$6.00" },
         { name: "Kabana Dog", description: "", price: "$5.30" },
