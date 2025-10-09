@@ -1,8 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, Star } from "lucide-react";
+import { Search, Star, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 import fishChipsPlate from "@/assets/fish-chips-plate.jpg";
 import prawnsImg from "@/assets/prawns.jpg";
 import hamburgerDealImg from "@/assets/hamburger-deal.jpg";
@@ -74,6 +77,7 @@ interface MenuCategory {
 
 const Menu = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const { addItem } = useCart();
   const menuCategories: MenuCategory[] = [
     {
       category: "Specials",
@@ -195,6 +199,18 @@ const Menu = () => {
     )
   })).filter(category => category.items.length > 0);
 
+  const handleAddToCart = (item: MenuItem) => {
+    addItem({
+      name: item.name,
+      price: parseFloat(item.price.replace('$', '')),
+      image: item.image,
+    });
+    toast({
+      title: 'Added to cart',
+      description: `${item.name} has been added to your cart`,
+    });
+  };
+
   return (
     <div className="min-h-screen py-12 px-4">
       <div className="container mx-auto max-w-7xl">
@@ -241,35 +257,45 @@ const Menu = () => {
                     >
                       {/* Snack items with leading (left-side) image */}
                       {isSnackCategory && item.image ? (
-                        <div className="flex items-center gap-3 p-4">
-                          <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md">
-                            <img 
-                              src={item.image} 
-                              alt={item.name} 
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex-1 min-w-0 flex justify-between items-start gap-3">
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2 mb-1">
-                                <h3 className="text-base font-semibold truncate">{item.name}</h3>
-                                {item.popular && (
-                                  <Badge variant="secondary" className="flex items-center gap-1 text-xs">
-                                    <Star className="h-3 w-3 fill-current" />
-                                    Popular
-                                  </Badge>
+                        <div className="p-4">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md">
+                              <img 
+                                src={item.image} 
+                                alt={item.name} 
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0 flex justify-between items-start gap-3">
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <h3 className="text-base font-semibold truncate">{item.name}</h3>
+                                  {item.popular && (
+                                    <Badge variant="secondary" className="flex items-center gap-1 text-xs">
+                                      <Star className="h-3 w-3 fill-current" />
+                                      Popular
+                                    </Badge>
+                                  )}
+                                </div>
+                                {item.description && (
+                                  <p className="text-sm text-muted-foreground">
+                                    {item.description}
+                                  </p>
                                 )}
                               </div>
-                              {item.description && (
-                                <p className="text-sm text-muted-foreground">
-                                  {item.description}
-                                </p>
-                              )}
-                            </div>
-                            <div className="text-lg font-bold text-primary whitespace-nowrap">
-                              {item.price}
+                              <div className="text-lg font-bold text-primary whitespace-nowrap">
+                                {item.price}
+                              </div>
                             </div>
                           </div>
+                          <Button 
+                            onClick={() => handleAddToCart(item)} 
+                            className="w-full"
+                            size="sm"
+                          >
+                            <ShoppingCart className="h-4 w-4 mr-2" />
+                            Add to Cart
+                          </Button>
                         </div>
                       ) : (
                         /* Regular items with top image */
@@ -290,7 +316,7 @@ const Menu = () => {
                             </div>
                           )}
                           <div className="p-4">
-                            <div className="flex justify-between items-start gap-3">
+                            <div className="flex justify-between items-start gap-3 mb-3">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
                                   <h3 className="text-base font-semibold truncate">{item.name}</h3>
@@ -311,6 +337,14 @@ const Menu = () => {
                                 {item.price}
                               </div>
                             </div>
+                            <Button 
+                              onClick={() => handleAddToCart(item)} 
+                              className="w-full"
+                              size="sm"
+                            >
+                              <ShoppingCart className="h-4 w-4 mr-2" />
+                              Add to Cart
+                            </Button>
                           </div>
                         </>
                       )}

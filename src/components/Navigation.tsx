@@ -1,14 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, LogOut, UserCircle } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import CartButton from "@/components/CartButton";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/costa-logo.jpg";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const { user, isAdmin, signOut } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -17,6 +20,10 @@ const Navigation = () => {
     { path: "/menu", label: "Menu" },
     { path: "/contact", label: "Contact" },
   ];
+
+  if (isAdmin) {
+    navLinks.push({ path: "/admin", label: "Admin" });
+  }
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -39,6 +46,24 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
+            <CartButton />
+            {user ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={signOut}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Link to="/auth">
+                <Button variant="ghost" size="sm">
+                  <UserCircle className="h-4 w-4 mr-2" />
+                  Sign In
+                </Button>
+              </Link>
+            )}
             <Button
               variant="ghost"
               size="icon"
@@ -52,6 +77,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
+            <CartButton />
             <Button
               variant="ghost"
               size="icon"
@@ -86,6 +112,26 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
+            {user ? (
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  signOut();
+                  setIsOpen(false);
+                }}
+                className="justify-start w-full"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Link to="/auth" onClick={() => setIsOpen(false)}>
+                <Button variant="ghost" className="justify-start w-full">
+                  <UserCircle className="h-4 w-4 mr-2" />
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
         )}
       </div>
