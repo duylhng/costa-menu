@@ -61,9 +61,14 @@ const Menu = () => {
         { name: "Hoki", description: "Add grilled +$1", price: "$6.00" },
         { name: "Snapper", description: "Add grilled +$1", price: "$8.50" },
         { name: "Barramundi", description: "Add grilled +$1", price: "$8.00" },
-        { name: "Whole", description: "Add grilled +$1", price: "$14.00" },
-        { name: "Half", description: "Add grilled +$1", price: "$8.00" },
-        { name: "Quarter", description: "Add grilled +$1", price: "$5.00" },
+      ],
+    },
+    {
+      category: "Chicken",
+      items: [
+        { name: "Whole", description: "", price: "$14.00" },
+        { name: "Half", description: "", price: "$8.00" },
+        { name: "Quarter", description: "", price: "$5.00" },
       ],
     },
     {
