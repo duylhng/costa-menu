@@ -56,7 +56,7 @@ const Contact = () => {
         <Card className="overflow-hidden">
           <div className="aspect-video w-full">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106218.48833886054!2d151.1035875!3d-33.8652374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.5746387438897!2d153.10838207617654!3d-27.62279897620728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915076b3d3e5e5%3A0x502a35af3dea7a0!2sShop%203%2F153%20Smith%20Rd%2C%20Woodridge%20QLD%204114%2C%20Australia!5e0!3m2!1sen!2s!4v1709876543210!5m2!1sen!2s"
               width="100%"
               height="100%"
               style={{ border: 0 }}
