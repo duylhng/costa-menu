@@ -8,9 +8,7 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">Find Us</h1>
-          <p className="text-xl text-muted-foreground">
-            Visit us or call ahead for pickup
-          </p>
+          <p className="text-xl text-muted-foreground">Visit us or call ahead for pickup</p>
         </div>
 
         {/* Contact Cards */}
@@ -36,7 +34,7 @@ const Contact = () => {
               href="tel:+61234567890"
               className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors block"
             >
-              (02) 1234 5678
+              0405353467
             </a>
             <p className="text-muted-foreground mt-2">Available during opening hours</p>
           </Card>
@@ -75,8 +73,8 @@ const Contact = () => {
           <Card className="p-8 bg-secondary/50">
             <h3 className="text-2xl font-bold mb-4">Pickup Only</h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We currently offer takeaway pickup service. Call ahead to place
-              your order and we'll have it ready when you arrive!
+              We currently offer takeaway pickup service. Call ahead to place your order and we'll have it ready when
+              you arrive!
             </p>
           </Card>
         </div>

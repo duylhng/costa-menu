@@ -8,10 +8,7 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }}>
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-background" />
         </div>
 
@@ -75,11 +72,9 @@ const Home = () => {
                 href="tel:+61234567890"
                 className="text-3xl font-bold text-primary hover:text-primary/80 transition-colors"
               >
-                (02) 1234 5678
+                0405353467
               </a>
-              <p className="mt-4 text-foreground/70">
-                Call us to place your order for pickup
-              </p>
+              <p className="mt-4 text-foreground/70">Call us to place your order for pickup</p>
             </div>
           </div>
         </div>
@@ -88,12 +83,9 @@ const Home = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 text-center">
         <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl font-bold mb-6">
-            Discover Our Fresh Seafood Menu
-          </h2>
+          <h2 className="text-4xl font-bold mb-6">Discover Our Fresh Seafood Menu</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            From classic fish and chips to delicious seafood favourites, 
-            all cooked fresh to order
+            From classic fish and chips to delicious seafood favourites, all cooked fresh to order
           </p>
           <Link to="/menu">
             <Button
