@@ -14,12 +14,21 @@ import codFishImg from "@/assets/cod-fish.jpg";
 import hokiFishImg from "@/assets/hoki-fish.jpg";
 import snapperFishImg from "@/assets/snapper-fish.jpg";
 import barramundiFishImg from "@/assets/barramundi-fish.jpg";
+import hamburgerImg from "@/assets/hamburger.jpg";
 import hamburgerLotImg from "@/assets/hamburger-lot.jpg";
 import steakBurgerImg from "@/assets/steak-burger.jpg";
+import steakBurgerLotImg from "@/assets/steak-burger-lot.jpg";
+import baconEggBurgerImg from "@/assets/bacon-egg-burger.jpg";
 import chickenBurgerImg from "@/assets/chicken-burger.jpg";
 import fishBurgerImg from "@/assets/fish-burger.jpg";
 import chickenGravyRollImg from "@/assets/chicken-gravy-roll.jpg";
+import chickenMayoRollImg from "@/assets/chicken-mayo-roll.jpg";
+import steakGravyRollImg from "@/assets/steak-gravy-roll.jpg";
 import hotDogImg from "@/assets/hot-dog.jpg";
+import hotDogCheeseImg from "@/assets/hot-dog-cheese.jpg";
+import hotDogLotImg from "@/assets/hot-dog-lot.jpg";
+import kabanaDogImg from "@/assets/kabana-dog.jpg";
+import kabanaDogLotImg from "@/assets/kabana-dog-lot.jpg";
 
 interface MenuItem {
   name: string;
@@ -77,11 +86,11 @@ const Menu = () => {
     {
       category: "Burgers & Sandwiches",
       items: [
-        { name: "Hamburger", description: "", price: "$6.00" },
+        { name: "Hamburger", description: "", price: "$6.00", image: hamburgerImg },
         { name: "Hamburger w/ Lot", description: "", price: "$8.50", image: hamburgerLotImg },
         { name: "Steak Burger", description: "", price: "$7.00", image: steakBurgerImg },
-        { name: "Steak Burger w/ Lot", description: "", price: "$9.50" },
-        { name: "Bacon & Egg Burger", description: "", price: "$6.00" },
+        { name: "Steak Burger w/ Lot", description: "", price: "$9.50", image: steakBurgerLotImg },
+        { name: "Bacon & Egg Burger", description: "", price: "$6.00", image: baconEggBurgerImg },
         { name: "Chicken Burger", description: "", price: "$6.50", image: chickenBurgerImg },
         { name: "Fish Burger", description: "", price: "$8.50", image: fishBurgerImg },
         { name: "Chicken Salad Sandwich", description: "", price: "$5.50" },
@@ -91,13 +100,13 @@ const Menu = () => {
       category: "Hot Rolls",
       items: [
         { name: "Chicken Gravy", description: "", price: "$6.00", image: chickenGravyRollImg },
-        { name: "Chicken Mayo", description: "", price: "$6.00" },
-        { name: "Steak Gravy", description: "", price: "$6.50" },
+        { name: "Chicken Mayo", description: "", price: "$6.00", image: chickenMayoRollImg },
+        { name: "Steak Gravy", description: "", price: "$6.50", image: steakGravyRollImg },
         { name: "Hot Dog", description: "", price: "$4.00", image: hotDogImg },
-        { name: "Hot Dog & Cheese", description: "", price: "$4.50" },
-        { name: "Hot Dog w/ Lot", description: "", price: "$6.00" },
-        { name: "Kabana Dog", description: "", price: "$5.30" },
-        { name: "Kabana Dog w/ Lot", description: "", price: "$7.30" },
+        { name: "Hot Dog & Cheese", description: "", price: "$4.50", image: hotDogCheeseImg },
+        { name: "Hot Dog w/ Lot", description: "", price: "$6.00", image: hotDogLotImg },
+        { name: "Kabana Dog", description: "", price: "$5.30", image: kabanaDogImg },
+        { name: "Kabana Dog w/ Lot", description: "", price: "$7.30", image: kabanaDogLotImg },
       ],
     },
     {
