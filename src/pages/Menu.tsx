@@ -1,21 +1,38 @@
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, Star } from "lucide-react";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import fishChipsPlate from "@/assets/fish-chips-plate.jpg";
+import prawnsImg from "@/assets/prawns.jpg";
+import calamariImg from "@/assets/calamari.jpg";
+
+interface MenuItem {
+  name: string;
+  description: string;
+  price: string;
+  popular?: boolean;
+  image?: string;
+}
+
+interface MenuCategory {
+  category: string;
+  items: MenuItem[];
+}
 
 const Menu = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const menuCategories = [
+  const menuCategories: MenuCategory[] = [
     {
       category: "Specials",
       items: [
-        { name: "Hamburger Deal (w/ Lot + $9.00)", description: "4 burgers, $3 chips, 1.25L drink", price: "$28.00" },
-        { name: "Hawaiian Burger Deal", description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy", price: "$30.00" },
-        { name: "Fish Deal", description: "4 cods, $3 chips, 1.25L drink", price: "$28.00" },
-        { name: "Seafood Basket", description: "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon", price: "$13.50" },
-        { name: "Special for Two", description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops", price: "$23.50" },
-        { name: "Chicken Deal", description: "1 whole chicken, $3 chips and 1.25L drink", price: "$21.00" },
-        { name: "Fish & Chips Salad Plate", description: "", price: "$12.50" },
+        { name: "Hamburger Deal (w/ Lot + $9.00)", description: "4 burgers, $3 chips, 1.25L drink", price: "$28.00", popular: false },
+        { name: "Hawaiian Burger Deal", description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy", price: "$30.00", popular: false },
+        { name: "Fish Deal", description: "4 cods, $3 chips, 1.25L drink", price: "$28.00", popular: true, image: fishChipsPlate },
+        { name: "Seafood Basket", description: "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon", price: "$13.50", popular: true, image: prawnsImg },
+        { name: "Special for Two", description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops", price: "$23.50", popular: true },
+        { name: "Chicken Deal", description: "1 whole chicken, $3 chips and 1.25L drink", price: "$21.00", popular: false },
+        { name: "Fish & Chips Salad Plate", description: "", price: "$12.50", popular: false },
       ],
     },
     {
@@ -30,17 +47,17 @@ const Menu = () => {
     {
       category: "Snack Deals",
       items: [
-        { name: "Chicken Nuggets", description: "5 for $3.50 ($0.70 each)", price: "$3.50" },
-        { name: "Chicken Chips", description: "5 for $2.50 ($0.50 each)", price: "$2.50" },
-        { name: "Spicy Chicken Wings", description: "5 for $6.50 ($1.30 each)", price: "$6.50" },
-        { name: "Chicken Garlic Balls", description: "6 for $4.80 ($0.80 each)", price: "$4.80" },
-        { name: "Fish Cocktails", description: "5 for $4.60 ($0.92 each)", price: "$4.60" },
-        { name: "Prawn Cutlets", description: "5 for $6.00 ($1.20 each)", price: "$6.00" },
-        { name: "Potato Scallops", description: "6 for $5.00 ($0.83 each)", price: "$5.00" },
-        { name: "Calamari Rings", description: "8 for $4.50 ($0.56 each)", price: "$4.50" },
-        { name: "Seafood Bites", description: "5 for $4.30 ($0.86 each)", price: "$4.30" },
-        { name: "Onion Rings", description: "4 for $1.50 ($0.38 each)", price: "$1.50" },
-        { name: "Battered Mussels", description: "4 for $2.80 ($0.70 each)", price: "$2.80" },
+        { name: "Chicken Nuggets", description: "5 for $3.50 ($0.70 each)", price: "$3.50", popular: false },
+        { name: "Chicken Chips", description: "5 for $2.50 ($0.50 each)", price: "$2.50", popular: false },
+        { name: "Spicy Chicken Wings", description: "5 for $6.50 ($1.30 each)", price: "$6.50", popular: false },
+        { name: "Chicken Garlic Balls", description: "6 for $4.80 ($0.80 each)", price: "$4.80", popular: false },
+        { name: "Fish Cocktails", description: "5 for $4.60 ($0.92 each)", price: "$4.60", popular: false },
+        { name: "Prawn Cutlets", description: "5 for $6.00 ($1.20 each)", price: "$6.00", popular: false },
+        { name: "Potato Scallops", description: "6 for $5.00 ($0.83 each)", price: "$5.00", popular: true },
+        { name: "Calamari Rings", description: "8 for $4.50 ($0.56 each)", price: "$4.50", popular: true, image: calamariImg },
+        { name: "Seafood Bites", description: "5 for $4.30 ($0.86 each)", price: "$4.30", popular: false },
+        { name: "Onion Rings", description: "4 for $1.50 ($0.38 each)", price: "$1.50", popular: false },
+        { name: "Battered Mussels", description: "4 for $2.80 ($0.70 each)", price: "$2.80", popular: false },
       ],
     },
     {
@@ -165,19 +182,44 @@ const Menu = () => {
                 {category.items.map((item, index) => (
                   <Card
                     key={index}
-                    className="p-4 hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
+                    className="overflow-hidden hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
                   >
-                    <div className="flex justify-between items-start gap-3">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-semibold mb-1 truncate">{item.name}</h3>
-                        {item.description && (
-                          <p className="text-sm text-muted-foreground">
-                            {item.description}
-                          </p>
+                    {item.image && (
+                      <div className="relative h-32 w-full overflow-hidden">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover"
+                        />
+                        {item.popular && (
+                          <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground flex items-center gap-1">
+                            <Star className="h-3 w-3 fill-current" />
+                            Popular
+                          </Badge>
                         )}
                       </div>
-                      <div className="text-lg font-bold text-primary whitespace-nowrap">
-                        {item.price}
+                    )}
+                    <div className="p-4">
+                      <div className="flex justify-between items-start gap-3">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="text-base font-semibold truncate">{item.name}</h3>
+                            {item.popular && !item.image && (
+                              <Badge variant="secondary" className="flex items-center gap-1 text-xs">
+                                <Star className="h-3 w-3 fill-current" />
+                                Popular
+                              </Badge>
+                            )}
+                          </div>
+                          {item.description && (
+                            <p className="text-sm text-muted-foreground">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                        <div className="text-lg font-bold text-primary whitespace-nowrap">
+                          {item.price}
+                        </div>
                       </div>
                     </div>
                   </Card>

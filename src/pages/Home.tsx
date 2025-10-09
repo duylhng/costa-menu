@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Clock } from "lucide-react";
+import { Phone, Clock, Star } from "lucide-react";
 import heroImage from "@/assets/hero-fish-chips.jpg";
+import calamariImg from "@/assets/calamari.jpg";
+import prawnsImg from "@/assets/prawns.jpg";
+import fishChipsPlate from "@/assets/fish-chips-plate.jpg";
+import dish1 from "@/assets/dish-1.jpg";
+import dish2 from "@/assets/dish-2.jpg";
+import dish3 from "@/assets/dish-3.jpg";
+import { Card } from "@/components/ui/card";
 
 const Home = () => {
   return (
@@ -75,6 +82,88 @@ const Home = () => {
                 0405 353 467
               </a>
               <p className="mt-4 text-foreground/70">Call us to place your order for pickup</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Items Section */}
+      <section className="py-16 px-4 bg-gradient-to-b from-background to-secondary/20">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Customer Favourites</h2>
+            <p className="text-lg text-muted-foreground">Our most popular dishes</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Fish & Chips */}
+            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="relative h-48 overflow-hidden">
+                <img src={fishChipsPlate} alt="Fish & Chips" className="w-full h-full object-cover" />
+                <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                  <Star className="h-4 w-4 fill-current" />
+                  Popular
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-xl font-bold mb-2">Fish & Chips</h3>
+                <p className="text-muted-foreground mb-3">Classic fish and chips, freshly battered</p>
+                <p className="text-2xl font-bold text-primary">From $9.00</p>
+              </div>
+            </Card>
+
+            {/* Seafood Basket */}
+            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="relative h-48 overflow-hidden">
+                <img src={prawnsImg} alt="Seafood Basket" className="w-full h-full object-cover" />
+                <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                  <Star className="h-4 w-4 fill-current" />
+                  Popular
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-xl font-bold mb-2">Seafood Basket</h3>
+                <p className="text-muted-foreground mb-3">A delicious mix of seafood favourites</p>
+                <p className="text-2xl font-bold text-primary">$13.50</p>
+              </div>
+            </Card>
+
+            {/* Calamari */}
+            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="relative h-48 overflow-hidden">
+                <img src={calamariImg} alt="Calamari Rings" className="w-full h-full object-cover" />
+                <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                  <Star className="h-4 w-4 fill-current" />
+                  Popular
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-xl font-bold mb-2">Calamari Rings</h3>
+                <p className="text-muted-foreground mb-3">Tender calamari, perfectly seasoned</p>
+                <p className="text-2xl font-bold text-primary">8 for $4.50</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Gallery Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Freshly Made Daily</h2>
+            <p className="text-lg text-muted-foreground">Take a look at our delicious offerings</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+              <img src={dish1} alt="Fresh Fish" className="w-full h-64 object-cover" />
+            </div>
+            <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+              <img src={dish2} alt="Golden Chips" className="w-full h-64 object-cover" />
+            </div>
+            <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+              <img src={dish3} alt="Seafood Selection" className="w-full h-64 object-cover" />
             </div>
           </div>
         </div>
