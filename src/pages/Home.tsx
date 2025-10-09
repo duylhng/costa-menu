@@ -147,28 +147,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Image Gallery Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">Freshly Made Daily</h2>
-            <p className="text-lg text-muted-foreground">Take a look at our delicious offerings</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-              <img src={dish1} alt="Fresh Fish" className="w-full h-64 object-cover" />
-            </div>
-            <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-              <img src={dish2} alt="Golden Chips" className="w-full h-64 object-cover" />
-            </div>
-            <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-              <img src={dish3} alt="Seafood Selection" className="w-full h-64 object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 px-4 text-center">
         <div className="container mx-auto max-w-3xl">
