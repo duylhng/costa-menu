@@ -21,6 +21,7 @@ import steakBurgerLotImg from "@/assets/steak-burger-lot.jpg";
 import baconEggBurgerImg from "@/assets/bacon-egg-burger.jpg";
 import chickenBurgerImg from "@/assets/chicken-burger.jpg";
 import fishBurgerImg from "@/assets/fish-burger.jpg";
+import chickenSaladSandwichImg from "@/assets/chicken-salad-sandwich.jpg";
 import chickenGravyRollImg from "@/assets/chicken-gravy-roll.jpg";
 import chickenMayoRollImg from "@/assets/chicken-mayo-roll.jpg";
 import steakGravyRollImg from "@/assets/steak-gravy-roll.jpg";
@@ -93,7 +94,7 @@ const Menu = () => {
         { name: "Bacon & Egg Burger", description: "", price: "$6.00", image: baconEggBurgerImg },
         { name: "Chicken Burger", description: "", price: "$6.50", image: chickenBurgerImg },
         { name: "Fish Burger", description: "", price: "$8.50", image: fishBurgerImg },
-        { name: "Chicken Salad Sandwich", description: "", price: "$5.50" },
+        { name: "Chicken Salad Sandwich", description: "", price: "$5.50", image: chickenSaladSandwichImg },
       ],
     },
     {
