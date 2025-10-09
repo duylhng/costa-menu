@@ -4,14 +4,23 @@ import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/hooks/use-toast';
 
+export interface GuestInfo {
+  name: string;
+  email: string;
+  phone: string;
+}
+
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   isAdmin: boolean;
   loading: boolean;
+  guestInfo: GuestInfo | null;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, name: string) => Promise<void>;
   signOut: () => Promise<void>;
+  setGuestInfo: (info: GuestInfo) => void;
+  clearGuestInfo: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -21,6 +30,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [guestInfo, setGuestInfoState] = useState<GuestInfo | null>(() => {
+    const saved = localStorage.getItem('guestInfo');
+    return saved ? JSON.parse(saved) : null;
+  });
   const navigate = useNavigate();
 
   const checkAdminRole = async (userId: string) => {
@@ -134,6 +147,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
       setIsAdmin(false);
+      clearGuestInfo();
       toast({ title: 'Signed out', description: 'Come back soon!' });
       navigate('/');
     } catch (error: any) {
@@ -145,9 +159,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const setGuestInfo = (info: GuestInfo) => {
+    setGuestInfoState(info);
+    localStorage.setItem('guestInfo', JSON.stringify(info));
+  };
+
+  const clearGuestInfo = () => {
+    setGuestInfoState(null);
+    localStorage.removeItem('guestInfo');
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, session, isAdmin, loading, signIn, signUp, signOut }}
+      value={{ user, session, isAdmin, loading, guestInfo, signIn, signUp, signOut, setGuestInfo, clearGuestInfo }}
     >
       {children}
     </AuthContext.Provider>

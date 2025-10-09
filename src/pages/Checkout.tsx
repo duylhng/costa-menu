@@ -11,46 +11,71 @@ import { toast } from '@/hooks/use-toast';
 
 const Checkout = () => {
   const { items, total, clearCart } = useCart();
-  const { user } = useAuth();
+  const { user, guestInfo } = useAuth();
   const navigate = useNavigate();
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState(guestInfo?.phone || '');
   const [pickupTime, setPickupTime] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
+    if (!user && !guestInfo) {
+      navigate('/auth');
+      return;
+    }
 
     setLoading(true);
     try {
-      // Get or update customer
-      const { data: customer } = await supabase
-        .from('customers')
-        .select('*')
-        .eq('user_id', user.id)
-        .single();
+      let customerId: string;
 
-      let customerId = customer?.id;
+      if (user) {
+        // Authenticated user flow
+        const { data: customer } = await supabase
+          .from('customers')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
 
-      if (!customer) {
+        if (!customer) {
+          const { data: newCustomer, error: customerError } = await supabase
+            .from('customers')
+            .insert({
+              user_id: user.id,
+              name: user.user_metadata.name || user.email || '',
+              email: user.email || '',
+              phone,
+            })
+            .select()
+            .single();
+
+          if (customerError) throw customerError;
+          customerId = newCustomer.id;
+        } else {
+          customerId = customer.id;
+          if (customer.phone !== phone) {
+            await supabase
+              .from('customers')
+              .update({ phone })
+              .eq('id', customer.id);
+          }
+        }
+      } else if (guestInfo) {
+        // Guest user flow - create customer without user_id
         const { data: newCustomer, error: customerError } = await supabase
           .from('customers')
           .insert({
-            user_id: user.id,
-            name: user.user_metadata.name || user.email || '',
-            email: user.email || '',
-            phone,
+            user_id: null,
+            name: guestInfo.name,
+            email: guestInfo.email,
+            phone: guestInfo.phone,
           })
           .select()
           .single();
 
         if (customerError) throw customerError;
         customerId = newCustomer.id;
-      } else if (customer.phone !== phone) {
-        await supabase
-          .from('customers')
-          .update({ phone })
-          .eq('id', customer.id);
+      } else {
+        throw new Error('No user or guest info available');
       }
 
       // Create order
@@ -102,7 +127,7 @@ const Checkout = () => {
     }
   };
 
-  if (!user) {
+  if (!user && !guestInfo) {
     navigate('/auth');
     return null;
   }
@@ -135,20 +160,27 @@ const Checkout = () => {
         <Card>
           <CardHeader>
             <CardTitle>Pickup Details</CardTitle>
+            {guestInfo && (
+              <p className="text-sm text-muted-foreground">
+                Ordering as: {guestInfo.name} ({guestInfo.email})
+              </p>
+            )}
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                  placeholder="(03) 5152 1234"
-                />
-              </div>
+              {!guestInfo && (
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    placeholder="(03) 5152 1234"
+                  />
+                </div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="pickup-time">Pickup Time</Label>
                 <Input

@@ -7,11 +7,11 @@ import { Minus, Plus, Trash2 } from 'lucide-react';
 
 const Cart = () => {
   const { items, updateQuantity, removeItem, total } = useCart();
-  const { user } = useAuth();
+  const { user, guestInfo } = useAuth();
   const navigate = useNavigate();
 
   const handleCheckout = () => {
-    if (!user) {
+    if (!user && !guestInfo) {
       navigate('/auth');
       return;
     }
@@ -100,7 +100,7 @@ const Cart = () => {
               </div>
             </div>
             <Button onClick={handleCheckout} className="w-full" size="lg">
-              {user ? 'Proceed to Checkout' : 'Sign in to Checkout'}
+              {user || guestInfo ? 'Proceed to Checkout' : 'Sign in to Checkout'}
             </Button>
           </CardContent>
         </Card>

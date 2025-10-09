@@ -11,8 +11,9 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signIn, signUp, user } = useAuth();
+  const { signIn, signUp, user, setGuestInfo } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,6 +42,12 @@ const Auth = () => {
     }
   };
 
+  const handleGuestCheckout = (e: React.FormEvent) => {
+    e.preventDefault();
+    setGuestInfo({ name, email, phone });
+    navigate('/cart');
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
@@ -49,11 +56,55 @@ const Auth = () => {
           <CardDescription>Sign in or create an account to order</CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="signin">
-            <TabsList className="grid w-full grid-cols-2">
+          <Tabs defaultValue="guest">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="guest">Guest</TabsTrigger>
               <TabsTrigger value="signin">Sign In</TabsTrigger>
               <TabsTrigger value="signup">Sign Up</TabsTrigger>
             </TabsList>
+            <TabsContent value="guest">
+              <form onSubmit={handleGuestCheckout} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="guest-name">Name</Label>
+                  <Input
+                    id="guest-name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    placeholder="Your name"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="guest-email">Email</Label>
+                  <Input
+                    id="guest-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="guest-phone">Phone</Label>
+                  <Input
+                    id="guest-phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    placeholder="(03) 5152 1234"
+                  />
+                </div>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  Continue as Guest
+                </Button>
+                <p className="text-xs text-muted-foreground text-center">
+                  No account needed. Your info is only used for this order.
+                </p>
+              </form>
+            </TabsContent>
             <TabsContent value="signin">
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div className="space-y-2">
