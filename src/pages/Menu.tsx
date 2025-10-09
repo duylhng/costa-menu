@@ -1,11 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, Star, ShoppingCart } from "lucide-react";
+import { Search, Star } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/contexts/CartContext";
-import { toast } from "@/hooks/use-toast";
 import fishChipsPlate from "@/assets/fish-chips-plate.jpg";
 import prawnsImg from "@/assets/prawns.jpg";
 import hamburgerDealImg from "@/assets/hamburger-deal.jpg";
@@ -77,7 +74,6 @@ interface MenuCategory {
 
 const Menu = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { addItem } = useCart();
   const menuCategories: MenuCategory[] = [
     {
       category: "Specials",
@@ -199,18 +195,6 @@ const Menu = () => {
     )
   })).filter(category => category.items.length > 0);
 
-  const handleAddToCart = (item: MenuItem) => {
-    addItem({
-      name: item.name,
-      price: parseFloat(item.price.replace('$', '')),
-      image: item.image,
-    });
-    toast({
-      title: 'Added to cart',
-      description: `${item.name} has been added to your cart`,
-    });
-  };
-
   return (
     <div className="min-h-screen py-12 px-4">
       <div className="container mx-auto max-w-7xl">
@@ -288,14 +272,6 @@ const Menu = () => {
                               </div>
                             </div>
                           </div>
-                          <Button 
-                            onClick={() => handleAddToCart(item)} 
-                            className="w-full"
-                            size="sm"
-                          >
-                            <ShoppingCart className="h-4 w-4 mr-2" />
-                            Add to Cart
-                          </Button>
                         </div>
                       ) : (
                         /* Regular items with top image */
@@ -337,14 +313,6 @@ const Menu = () => {
                                 {item.price}
                               </div>
                             </div>
-                            <Button 
-                              onClick={() => handleAddToCart(item)} 
-                              className="w-full"
-                              size="sm"
-                            >
-                              <ShoppingCart className="h-4 w-4 mr-2" />
-                              Add to Cart
-                            </Button>
                           </div>
                         </>
                       )}
