@@ -1,12 +1,10 @@
 import { Card } from "@/components/ui/card";
-import calamariImg from "@/assets/calamari.jpg";
-import fishChipsImg from "@/assets/fish-chips-plate.jpg";
-import prawnsImg from "@/assets/prawns.jpg";
-import dish1 from "@/assets/dish-1.jpg";
-import dish2 from "@/assets/dish-2.jpg";
-import dish3 from "@/assets/dish-3.jpg";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import { useState } from "react";
 
 const Menu = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const menuCategories = [
     {
       category: "Snacks",
@@ -58,7 +56,6 @@ const Menu = () => {
     },
     {
       category: "Fish (Crumbed / Battered)",
-      image: fishChipsImg,
       items: [
         { name: "Cod", description: "", price: "$6.00" },
         { name: "Hoki", description: "", price: "$6.00" },
@@ -71,7 +68,6 @@ const Menu = () => {
     },
     {
       category: "Snack Deals",
-      image: calamariImg,
       items: [
         { name: "Chicken Nuggets", description: "5 pieces", price: "$3.50" },
         { name: "Chicken Chips", description: "5 pieces", price: "$2.50" },
@@ -104,34 +100,48 @@ const Menu = () => {
     },
   ];
 
+  // Filter categories based on search
+  const filteredCategories = menuCategories.map(category => ({
+    ...category,
+    items: category.items.filter(item =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  })).filter(category => category.items.length > 0);
+
   return (
     <div className="min-h-screen py-12 px-4">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">Our Menu</h1>
           <p className="text-lg text-muted-foreground">
             Fresh fish and seafood, cooked to order daily
           </p>
         </div>
 
+        {/* Search Bar */}
+        <div className="max-w-md mx-auto mb-12">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+            <Input
+              type="text"
+              placeholder="Search menu items..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 h-12 text-base"
+            />
+          </div>
+        </div>
+
         {/* Menu Categories */}
         <div className="space-y-12">
-          {menuCategories.map((category) => (
+          {filteredCategories.map((category) => (
             <div key={category.category} className="space-y-4">
-              {/* Category Header with Image */}
-              <div className="flex items-center gap-4 mb-6">
-                {category.image && (
-                  <img 
-                    src={category.image} 
-                    alt={category.category}
-                    className="w-16 h-16 rounded-lg object-cover shadow-md"
-                  />
-                )}
-                <h2 className="text-2xl md:text-3xl font-bold text-primary">
-                  {category.category}
-                </h2>
-              </div>
+              {/* Category Header */}
+              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+                {category.category}
+              </h2>
 
               {/* Menu Items Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
