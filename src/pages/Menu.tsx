@@ -133,7 +133,7 @@ const Menu = () => {
     {
       category: "Fish (Crumbed / Battered)",
       items: [
-        { name: "Cod", description: "Add grilled +$1", price: "$6.00", image: codFishImg },
+        { name: "Cod", description: "Add grilled +$1", price: "$6.00", popular: true, image: codFishImg },
         { name: "Hoki", description: "Add grilled +$1", price: "$6.00", image: hokiFishImg },
         { name: "Snapper", description: "Add grilled +$1", price: "$8.50", image: snapperFishImg },
         { name: "Barramundi", description: "Add grilled +$1", price: "$8.00", image: barramundiFishImg },
