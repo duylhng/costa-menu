@@ -290,18 +290,14 @@ const Menu = () => {
     {
       category: "Chicken",
       items: [
-        { name: "Whole", description: "", price: "$18.00" },
+        { name: "Whole", description: "", price: "$19.00" },
         { name: "Half", description: "", price: "$9.00" },
         { name: "Quarter", description: "", price: "$6.00" },
       ],
     },
     {
       category: "Minimum Hot Chips",
-      items: [
-        { name: "Chips", description: "", price: "$4.00" },
-        { name: "Beer Battered Chips", description: "", price: "$4.00" },
-        { name: "Potato Gems", description: "", price: "$4.00" },
-      ],
+      items: [{ name: "Chips", description: "", price: "$4.00" }],
     },
     {
       category: "Gravy",
