@@ -128,7 +128,7 @@ const Menu = () => {
           name: "Special Basket",
           description:
             "$3 chips, 2 cods, 10 fish cocktails, 8 calamari rings, 5 seafood bites, 5 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
-          price: "51.00",
+          price: "$51.00",
           popular: false,
           image: specialBasketImg,
         },
