@@ -334,6 +334,15 @@ const Menu = () => {
           <p className="text-lg text-muted-foreground">Fresh fish and seafood, cooked to order daily</p>
         </div>
 
+        {/* Price Notice */}
+        <div className="max-w-md mx-auto mb-6">
+          <div className="text-center p-4 bg-secondary/50 rounded-lg">
+            <p className="text-sm text-muted-foreground">
+              * Prices subject to change. Please call to confirm current pricing.
+            </p>
+          </div>
+        </div>
+
         {/* Search Bar */}
         <div className="max-w-md mx-auto mb-12">
           <div className="relative">
@@ -432,13 +441,6 @@ const Menu = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Footer Note */}
-        <div className="mt-12 text-center p-6 bg-secondary/50 rounded-lg">
-          <p className="text-sm text-muted-foreground">
-            * Prices subject to change. Please call to confirm current pricing.
-          </p>
         </div>
       </div>
     </div>
