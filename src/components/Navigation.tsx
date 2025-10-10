@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -22,9 +22,23 @@ const Navigation = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src={logo} alt="Costa's Takeaway" className="h-16 w-auto" />
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <img src={logo} alt="Costa's Takeaway" className="h-16 w-auto" />
+            </Link>
+            <div className="hidden lg:flex flex-col text-sm">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="h-4 w-4" />
+                <span>Shop 3, 153 Smith Rd, Woodridge QLD 4114</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground mt-1">
+                <Phone className="h-4 w-4" />
+                <a href="tel:0405353467" className="hover:text-primary transition-colors">
+                  0405 353 467
+                </a>
+              </div>
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
