@@ -284,7 +284,7 @@ const Menu = () => {
                                 className="w-full h-full object-cover"
                               />
                               {item.popular && (
-                                <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground flex items-center gap-1">
+                                <Badge className="absolute top-2 right-2 bg-primary text-primary-foreground flex items-center gap-1 shadow-lg">
                                   <Star className="h-3 w-3 fill-current" />
                                   Popular
                                 </Badge>
