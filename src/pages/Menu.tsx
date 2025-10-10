@@ -78,13 +78,56 @@ const Menu = () => {
     {
       category: "Specials",
       items: [
-        { name: "Hamburger Deal (w/ Lot + $9.00)", description: "4 burgers, $3 chips, 1.25L drink", price: "$28.00", popular: false, image: hamburgerDealImg },
-        { name: "Hawaiian Burger Deal", description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy", price: "$30.00", popular: false, image: hawaiianBurgerImg },
-        { name: "Fish Deal", description: "4 cods, $3 chips, 1.25L drink", price: "$28.00", popular: true, image: fishChipsPlate },
-        { name: "Seafood Basket", description: "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon", price: "$13.50", popular: true, image: prawnsImg },
-        { name: "Special for Two", description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops", price: "$23.50", popular: true, image: specialForTwoImg },
-        { name: "Chicken Deal", description: "1 whole chicken, $3 chips and 1.25L drink", price: "$21.00", popular: false, image: chickenDealImg },
-        { name: "Fish & Chips Salad Plate", description: "", price: "$12.50", popular: false, image: fishChipsSaladImg },
+        {
+          name: "Hamburger Deal (w/ Lot + $9.00)",
+          description: "4 burgers, $3 chips, 1.25L drink",
+          price: "$28.00",
+          popular: true,
+          image: hamburgerDealImg,
+        },
+        {
+          name: "Hawaiian Burger Deal",
+          description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy",
+          price: "$30.00",
+          popular: false,
+          image: hawaiianBurgerImg,
+        },
+        {
+          name: "Fish Deal",
+          description: "4 cods, $3 chips, 1.25L drink",
+          price: "$28.00",
+          popular: true,
+          image: fishChipsPlate,
+        },
+        {
+          name: "Seafood Basket",
+          description:
+            "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
+          price: "$13.50",
+          popular: true,
+          image: prawnsImg,
+        },
+        {
+          name: "Special for Two",
+          description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops",
+          price: "$23.50",
+          popular: true,
+          image: specialForTwoImg,
+        },
+        {
+          name: "Chicken Deal",
+          description: "1 whole chicken, $3 chips and 1.25L drink",
+          price: "$21.00",
+          popular: false,
+          image: chickenDealImg,
+        },
+        {
+          name: "Fish & Chips Salad Plate",
+          description: "",
+          price: "$12.50",
+          popular: false,
+          image: fishChipsSaladImg,
+        },
       ],
     },
     {
@@ -99,17 +142,83 @@ const Menu = () => {
     {
       category: "Snack Deals",
       items: [
-        { name: "Chicken Nuggets", description: "5 for $3.50 ($0.70 each)", price: "$3.50", popular: false, image: chickenNuggetsImg },
-        { name: "Chicken Chips", description: "5 for $2.50 ($0.50 each)", price: "$2.50", popular: false, image: chickenChipsImg },
-        { name: "Spicy Chicken Wings", description: "5 for $6.50 ($1.30 each)", price: "$6.50", popular: false, image: spicyChickenWingsImg },
-        { name: "Chicken Garlic Balls", description: "6 for $4.80 ($0.80 each)", price: "$4.80", popular: false, image: chickenGarlicBallsImg },
-        { name: "Fish Cocktails", description: "5 for $4.60 ($0.92 each)", price: "$4.60", popular: false, image: fishCocktailsImg },
-        { name: "Prawn Cutlets", description: "5 for $6.00 ($1.20 each)", price: "$6.00", popular: false, image: prawnCutletsImg },
-        { name: "Potato Scallops", description: "6 for $5.00 ($0.83 each)", price: "$5.00", popular: true, image: potatoScallopsImg },
-        { name: "Calamari Rings", description: "8 for $4.50 ($0.56 each)", price: "$4.50", popular: true, image: calamariRingsImg },
-        { name: "Seafood Bites", description: "5 for $4.30 ($0.86 each)", price: "$4.30", popular: false, image: seafoodBitesImg },
-        { name: "Onion Rings", description: "4 for $1.50 ($0.38 each)", price: "$1.50", popular: false, image: onionRingsImg },
-        { name: "Battered Mussels", description: "4 for $2.80 ($0.70 each)", price: "$2.80", popular: false, image: batteredMusselsImg },
+        {
+          name: "Chicken Nuggets",
+          description: "5 for $3.50 ($0.70 each)",
+          price: "$3.50",
+          popular: false,
+          image: chickenNuggetsImg,
+        },
+        {
+          name: "Chicken Chips",
+          description: "5 for $2.50 ($0.50 each)",
+          price: "$2.50",
+          popular: false,
+          image: chickenChipsImg,
+        },
+        {
+          name: "Spicy Chicken Wings",
+          description: "5 for $6.50 ($1.30 each)",
+          price: "$6.50",
+          popular: false,
+          image: spicyChickenWingsImg,
+        },
+        {
+          name: "Chicken Garlic Balls",
+          description: "6 for $4.80 ($0.80 each)",
+          price: "$4.80",
+          popular: false,
+          image: chickenGarlicBallsImg,
+        },
+        {
+          name: "Fish Cocktails",
+          description: "5 for $4.60 ($0.92 each)",
+          price: "$4.60",
+          popular: false,
+          image: fishCocktailsImg,
+        },
+        {
+          name: "Prawn Cutlets",
+          description: "5 for $6.00 ($1.20 each)",
+          price: "$6.00",
+          popular: false,
+          image: prawnCutletsImg,
+        },
+        {
+          name: "Potato Scallops",
+          description: "6 for $5.00 ($0.83 each)",
+          price: "$5.00",
+          popular: true,
+          image: potatoScallopsImg,
+        },
+        {
+          name: "Calamari Rings",
+          description: "8 for $4.50 ($0.56 each)",
+          price: "$4.50",
+          popular: true,
+          image: calamariRingsImg,
+        },
+        {
+          name: "Seafood Bites",
+          description: "5 for $4.30 ($0.86 each)",
+          price: "$4.30",
+          popular: false,
+          image: seafoodBitesImg,
+        },
+        {
+          name: "Onion Rings",
+          description: "4 for $1.50 ($0.38 each)",
+          price: "$1.50",
+          popular: false,
+          image: onionRingsImg,
+        },
+        {
+          name: "Battered Mussels",
+          description: "4 for $2.80 ($0.70 each)",
+          price: "$2.80",
+          popular: false,
+          image: batteredMusselsImg,
+        },
       ],
     },
     {
@@ -187,13 +296,16 @@ const Menu = () => {
   ];
 
   // Filter categories based on search
-  const filteredCategories = menuCategories.map(category => ({
-    ...category,
-    items: category.items.filter(item =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  })).filter(category => category.items.length > 0);
+  const filteredCategories = menuCategories
+    .map((category) => ({
+      ...category,
+      items: category.items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
+    }))
+    .filter((category) => category.items.length > 0);
 
   return (
     <div className="min-h-screen py-12 px-4">
@@ -201,9 +313,7 @@ const Menu = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">Our Menu</h1>
-          <p className="text-lg text-muted-foreground">
-            Fresh fish and seafood, cooked to order daily
-          </p>
+          <p className="text-lg text-muted-foreground">Fresh fish and seafood, cooked to order daily</p>
         </div>
 
         {/* Search Bar */}
@@ -225,15 +335,13 @@ const Menu = () => {
           {filteredCategories.map((category) => (
             <div key={category.category} className="space-y-4">
               {/* Category Header */}
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
-                {category.category}
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary">{category.category}</h2>
 
               {/* Menu Items Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {category.items.map((item, index) => {
                   const isSnackCategory = category.category === "Snacks" || category.category === "Snack Deals";
-                  
+
                   return (
                     <Card
                       key={index}
@@ -244,11 +352,7 @@ const Menu = () => {
                         <div className="p-4">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md">
-                              <img 
-                                src={item.image} 
-                                alt={item.name} 
-                                className="w-full h-full object-cover"
-                              />
+                              <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                             </div>
                             <div className="flex-1 min-w-0 flex justify-between items-start gap-3">
                               <div className="flex-1 min-w-0">
@@ -262,14 +366,10 @@ const Menu = () => {
                                   )}
                                 </div>
                                 {item.description && (
-                                  <p className="text-sm text-muted-foreground">
-                                    {item.description}
-                                  </p>
+                                  <p className="text-sm text-muted-foreground">{item.description}</p>
                                 )}
                               </div>
-                              <div className="text-lg font-bold text-primary whitespace-nowrap">
-                                {item.price}
-                              </div>
+                              <div className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</div>
                             </div>
                           </div>
                         </div>
@@ -278,11 +378,7 @@ const Menu = () => {
                         <>
                           {item.image && (
                             <div className="relative h-32 w-full overflow-hidden">
-                              <img 
-                                src={item.image} 
-                                alt={item.name} 
-                                className="w-full h-full object-cover"
-                              />
+                              <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                               {item.popular && (
                                 <Badge className="absolute top-2 right-2 bg-primary text-primary-foreground flex items-center gap-1 shadow-lg">
                                   <Star className="h-3 w-3 fill-current" />
@@ -304,14 +400,10 @@ const Menu = () => {
                                   )}
                                 </div>
                                 {item.description && (
-                                  <p className="text-sm text-muted-foreground">
-                                    {item.description}
-                                  </p>
+                                  <p className="text-sm text-muted-foreground">{item.description}</p>
                                 )}
                               </div>
-                              <div className="text-lg font-bold text-primary whitespace-nowrap">
-                                {item.price}
-                              </div>
+                              <div className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</div>
                             </div>
                           </div>
                         </>
