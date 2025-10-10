@@ -58,6 +58,8 @@ import seafoodStickImg from "@/assets/seafood-stick.jpg";
 import pineappleFritterImg from "@/assets/pineapple-fritter.jpg";
 import porkSausageImg from "@/assets/pork-sausage.jpg";
 import hamCheeseScallopImg from "@/assets/ham-cheese-scallop.jpg";
+import fishermanBasketImg from "@/assets/fisherman-basket.jpg";
+import specialBasketImg from "@/assets/special-basket.jpg";
 
 interface MenuItem {
   name: string;
@@ -127,6 +129,20 @@ const Menu = () => {
           price: "$12.50",
           popular: false,
           image: fishChipsSaladImg,
+        },
+        {
+          name: "Fisherman Basket",
+          description: "$3 chips, 2 cods, 10 fish cocktails, 10 calamari rings, 10 seafood bites, 8 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
+          price: "$62.00",
+          popular: false,
+          image: fishermanBasketImg,
+        },
+        {
+          name: "Special Basket",
+          description: "$3 chips, 2 cods, 10 fish cocktails, 8 calamari rings, 5 seafood bites, 5 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
+          price: "$51.00",
+          popular: false,
+          image: specialBasketImg,
         },
       ],
     },
