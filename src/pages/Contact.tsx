@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { MapPin, Phone, Clock } from "lucide-react";
-import GoogleMap from "@/components/GoogleMap";
 
 const Contact = () => {
   return (
@@ -56,11 +55,14 @@ const Contact = () => {
         {/* Map */}
         <Card className="overflow-hidden">
           <div className="aspect-video w-full">
-            <GoogleMap
-              apiKey="YOUR_GOOGLE_MAPS_API_KEY"
-              center={{ lat: -27.622799, lng: 153.108382 }}
-              zoom={15}
-              markerTitle="Costa's Takeaway - Shop 3, 153 Smith Rd, Woodridge"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3542.5849877!2d153.1061921!3d-27.6227986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915071f09a847b%3A0x1e0d7c8c0e0a4d5!2s153%20Smith%20Rd%2C%20Woodridge%20QLD%204114!5e0!3m2!1sen!2sau!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </Card>
