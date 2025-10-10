@@ -58,8 +58,6 @@ import seafoodStickImg from "@/assets/seafood-stick.jpg";
 import pineappleFritterImg from "@/assets/pineapple-fritter.jpg";
 import porkSausageImg from "@/assets/pork-sausage.jpg";
 import hamCheeseScallopImg from "@/assets/ham-cheese-scallop.jpg";
-import fishermanBasketImg from "@/assets/fisherman-basket.jpg";
-import specialBasketImg from "@/assets/special-basket.jpg";
 
 interface MenuItem {
   name: string;
@@ -81,7 +79,7 @@ const Menu = () => {
       category: "Specials",
       items: [
         {
-          name: "Hamburger Deal (w/ Lot + $9.00)",
+          name: "Hamburger Deal (w/ Lot + $12.00)",
           description: "4 burgers, $3 chips, 1.25L drink",
           price: "$28.00",
           popular: true,
@@ -104,7 +102,7 @@ const Menu = () => {
         {
           name: "Seafood Basket",
           description:
-            "$3.00 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
+            "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
           price: "$13.50",
           popular: true,
           image: prawnsImg,
@@ -115,22 +113,6 @@ const Menu = () => {
           price: "$23.50",
           popular: true,
           image: specialForTwoImg,
-        },
-        {
-          name: "Fisherman Basket",
-          description:
-            "$3 chips, 2 cods, 10 fish cocktails, 10 calamari rings, 10 seafood bites, 8 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
-          price: "$62.00",
-          popular: false,
-          image: fishermanBasketImg,
-        },
-        {
-          name: "Special Basket",
-          description:
-            "$3 chips, 2 cods, 10 fish cocktails, 8 calamari rings, 5 seafood bites, 5 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
-          price: "$51.00",
-          popular: false,
-          image: specialBasketImg,
         },
         {
           name: "Chicken Deal",
