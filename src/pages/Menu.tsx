@@ -79,23 +79,23 @@ const Menu = () => {
       category: "Specials",
       items: [
         {
-          name: "Hamburger Deal (w/ Lot + $12.00)",
+          name: "Hamburger Deal (w/ Lot + $9.00)",
           description: "4 burgers, $3 chips, 1.25L drink",
-          price: "$37.00",
+          price: "$28.00",
           popular: true,
           image: hamburgerDealImg,
         },
         {
           name: "Hawaiian Burger Deal",
           description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy",
-          price: "$40.00",
+          price: "$30.00",
           popular: false,
           image: hawaiianBurgerImg,
         },
         {
           name: "Fish Deal",
           description: "4 cods, $3 chips, 1.25L drink",
-          price: "$37.00",
+          price: "$28.00",
           popular: true,
           image: fishChipsPlate,
         },
@@ -117,7 +117,7 @@ const Menu = () => {
         {
           name: "Chicken Deal",
           description: "1 whole chicken, $3 chips and 1.25L drink",
-          price: "$21.00",
+          price: "$27.00",
           popular: false,
           image: chickenDealImg,
         },
