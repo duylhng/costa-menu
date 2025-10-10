@@ -174,7 +174,7 @@ const Menu = () => {
           name: "Fish Cocktails",
           description: "5 for $4.60 ($0.92 each)",
           price: "$4.60",
-          popular: false,
+          popular: true,
           image: fishCocktailsImg,
         },
         {
@@ -225,7 +225,7 @@ const Menu = () => {
       category: "Burgers & Sandwiches",
       items: [
         { name: "Hamburger", description: "", price: "$6.00", image: hamburgerImg },
-        { name: "Hamburger w/ Lot", description: "", price: "$8.50", image: hamburgerLotImg },
+        { name: "Hamburger w/ Lot", description: "", price: "$8.50", popular: true, image: hamburgerLotImg },
         { name: "Steak Burger", description: "", price: "$7.00", image: steakBurgerImg },
         { name: "Steak Burger w/ Lot", description: "", price: "$9.50", image: steakBurgerLotImg },
         { name: "Bacon & Egg Burger", description: "", price: "$6.00", image: baconEggBurgerImg },
