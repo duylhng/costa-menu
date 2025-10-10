@@ -375,7 +375,7 @@ const Menu = () => {
                             <div className="flex-1 min-w-0 flex justify-between items-start gap-3">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
-                                  <h3 className="text-base font-semibold truncate">{item.name}</h3>
+                                  <h3 className="text-base font-semibold break-words">{item.name}</h3>
                                   {item.popular && (
                                     <Badge variant="secondary" className="flex items-center gap-1 text-xs">
                                       <Star className="h-3 w-3 fill-current" />
@@ -409,7 +409,7 @@ const Menu = () => {
                             <div className="flex justify-between items-start gap-3 mb-3">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
-                                  <h3 className="text-base font-semibold truncate">{item.name}</h3>
+                                  <h3 className="text-base font-semibold break-words">{item.name}</h3>
                                   {item.popular && !item.image && (
                                     <Badge variant="secondary" className="flex items-center gap-1 text-xs">
                                       <Star className="h-3 w-3 fill-current" />
