@@ -242,10 +242,10 @@ const Menu = () => {
     {
       category: "Burgers & Sandwiches",
       items: [
-        { name: "Hamburger", description: "", price: "$7.50", image: hamburgerImg },
+        { name: "Hamburger", description: "", price: "$7.50", popular: true, image: hamburgerImg },
         { name: "Hamburger w/ Lot", description: "", price: "$10.50", popular: true, image: hamburgerLotImg },
-        { name: "Steak Burger", description: "", price: "$8.50", image: steakBurgerImg },
-        { name: "Steak Burger w/ Lot", description: "", price: "$11.50", image: steakBurgerLotImg },
+        { name: "Steak Burger", description: "", price: "$8.50", popular: true, image: steakBurgerImg },
+        { name: "Steak Burger w/ Lot", description: "", price: "$11.50", popular: true, image: steakBurgerLotImg },
         { name: "Bacon & Egg Burger", description: "", price: "$7.50", image: baconEggBurgerImg },
         { name: "Chicken Burger", description: "", price: "$8.50", image: chickenBurgerImg },
         { name: "Fish Burger", description: "", price: "$9.50", image: fishBurgerImg },
