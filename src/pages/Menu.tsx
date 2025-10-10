@@ -8,6 +8,8 @@ import prawnsImg from "@/assets/prawns.jpg";
 import hamburgerDealImg from "@/assets/hamburger-deal.jpg";
 import hawaiianBurgerImg from "@/assets/hawaiian-burger.jpg";
 import specialForTwoImg from "@/assets/special-for-two.jpg";
+import fishermanBasketImg from "@/assets/fisherman-basket.jpg";
+import specialBasketImg from "@/assets/special-basket.jpg";
 import chickenDealImg from "@/assets/chicken-deal.jpg";
 import fishChipsSaladImg from "@/assets/fish-chips-salad.jpg";
 import codFishImg from "@/assets/cod-fish.jpg";
@@ -79,38 +81,38 @@ const Menu = () => {
       category: "Specials",
       items: [
         {
-          name: "Hamburger Deal (w/ Lot + $12.00)",
+          name: "Hamburger Deal (w/ Lot + $9.00)",
           description: "4 burgers, $3 chips, 1.25L drink",
-          price: "$37.00",
+          price: "$28.00",
           popular: true,
           image: hamburgerDealImg,
         },
         {
           name: "Hawaiian Burger Deal",
           description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy",
-          price: "$40.00",
+          price: "$30.00",
           popular: false,
           image: hawaiianBurgerImg,
         },
         {
           name: "Fish Deal",
           description: "4 cods, $3 chips, 1.25L drink",
-          price: "$37.00",
+          price: "$28.00",
           popular: true,
           image: fishChipsPlate,
         },
         {
           name: "Seafood Basket",
           description:
-            "Minimum chips, 4 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
-          price: "$16.00",
+            "$2.50 chips, 5 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
+          price: "$13.50",
           popular: true,
           image: prawnsImg,
         },
         {
           name: "Special for Two",
           description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops",
-          price: "$29.50",
+          price: "$23.50",
           popular: true,
           image: specialForTwoImg,
         },
@@ -120,6 +122,7 @@ const Menu = () => {
             "$3 chips, 2 cods, 10 fish cocktails, 10 calamari rings, 10 seafood bites, 8 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
           price: "$62.00",
           popular: false,
+          image: fishermanBasketImg,
         },
         {
           name: "Special Basket",
@@ -127,18 +130,19 @@ const Menu = () => {
             "$3 chips, 2 cods, 10 fish cocktails, 8 calamari rings, 5 seafood bites, 5 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
           price: "51.00",
           popular: false,
+          image: specialBasketImg,
         },
         {
           name: "Chicken Deal",
           description: "1 whole chicken, $3 chips and 1.25L drink",
-          price: "$27.00",
+          price: "$21.00",
           popular: false,
           image: chickenDealImg,
         },
         {
           name: "Fish & Chips Salad Plate",
           description: "",
-          price: "$15.00",
+          price: "$12.50",
           popular: false,
           image: fishChipsSaladImg,
         },
