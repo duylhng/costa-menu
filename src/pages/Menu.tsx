@@ -6,11 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import fishChipsPlate from "@/assets/fish-chips-plate.jpg";
 import prawnsImg from "@/assets/prawns.jpg";
 import hamburgerDealImg from "@/assets/hamburger-deal.jpg";
-import hawaiianBurgerImg from "@/assets/hawaiian-burger.jpg";
 import specialForTwoImg from "@/assets/special-for-two.jpg";
 import fishermanBasketImg from "@/assets/fisherman-basket.jpg";
 import specialBasketImg from "@/assets/special-basket.jpg";
-import chickenDealImg from "@/assets/chicken-deal.jpg";
 import fishChipsSaladImg from "@/assets/fish-chips-salad.jpg";
 import codFishImg from "@/assets/cod-fish.jpg";
 import hokiFishImg from "@/assets/hoki-fish.jpg";
@@ -44,18 +42,15 @@ import seafoodBitesImg from "@/assets/seafood-bites.jpg";
 import onionRingsImg from "@/assets/onion-rings.jpg";
 import batteredMusselsImg from "@/assets/battered-mussels.jpg";
 import kabanaImg from "@/assets/kabana.jpg";
-import cheeseKabanaImg from "@/assets/cheese-kabana.jpg";
 import chikoRollImg from "@/assets/chiko-roll.jpg";
 import springRollImg from "@/assets/spring-roll.jpg";
 import crumbedSausageImg from "@/assets/crumbed-sausage.jpg";
-import baconCheeseSausageImg from "@/assets/bacon-cheese-sausage.jpg";
 import batteredSavImg from "@/assets/battered-sav.jpg";
 import fishCakeImg from "@/assets/fish-cake.jpg";
 import chickenCheeseSchnitzelImg from "@/assets/chicken-cheese-schnitzel.jpg";
 import miniDimSimImg from "@/assets/mini-dim-sim.jpg";
 import chickenDimSimImg from "@/assets/chicken-dim-sim.jpg";
 import cornJackImg from "@/assets/corn-jack.jpg";
-import beefCroquetteImg from "@/assets/beef-croquette.jpg";
 import seafoodStickImg from "@/assets/seafood-stick.jpg";
 import pineappleFritterImg from "@/assets/pineapple-fritter.jpg";
 import porkSausageImg from "@/assets/pork-sausage.jpg";
@@ -82,44 +77,37 @@ const Menu = () => {
       items: [
         {
           name: "Hamburger Deal (w/ Lot + $12.00)",
-          description: "4 burgers, $3 chips, 1.25L drink",
-          price: "$37.00",
+          description: "4 burgers, minimum chips, 1.25L drink",
+          price: "$39.00",
           popular: true,
           image: hamburgerDealImg,
         },
         {
-          name: "Hawaiian Burger Deal",
-          description: "4 Hawaiian burgers, $3 chips, 1.25L drink and medium gravy",
-          price: "$40.00",
-          popular: false,
-          image: hawaiianBurgerImg,
-        },
-        {
           name: "Fish Deal",
-          description: "4 cods, $3 chips, 1.25L drink",
-          price: "$37.00",
+          description: "4 fish, minimum chips and 1.25L drink",
+          price: "$39.00",
           popular: true,
           image: fishChipsPlate,
         },
         {
           name: "Seafood Basket",
           description:
-            "Minimum chips, 4 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
-          price: "$16.00",
+            "Chips, 4 calamaries, 3 fish cocktails, 3 seafood bites, 2 prawn cutlets, 1 seafood stick, tartare sauce and lemon",
+          price: "$17.00",
           popular: true,
           image: prawnsImg,
         },
         {
           name: "Special for Two",
-          description: "$3 chips, 2 cods, 6 calamaries, 4 seafood bites and 3 potato scallops",
-          price: "$29.50",
+          description: "2 cods, 3 potato scallops, 4 seafood bites, 6 calamari rings, minimum chips",
+          price: "$31.00",
           popular: true,
           image: specialForTwoImg,
         },
         {
           name: "Fisherman Basket",
           description:
-            "$3 chips, 2 cods, 10 fish cocktails, 10 calamari rings, 10 seafood bites, 8 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
+            "Minimum chips, 2 cods, 10 fish cocktails, 10 calamari rings, 10 seafood bites, 8 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
           price: "$62.00",
           popular: false,
           image: fishermanBasketImg,
@@ -127,17 +115,10 @@ const Menu = () => {
         {
           name: "Special Basket",
           description:
-            "$3 chips, 2 cods, 10 fish cocktails, 8 calamari rings, 5 seafood bites, 5 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
+            "Minimum chips, 2 cods, 10 fish cocktails, 8 calamari rings, 5 seafood bites, 5 prawn cutlets, 2 seafood sticks, 2 tartare sauce",
           price: "$51.00",
           popular: false,
           image: specialBasketImg,
-        },
-        {
-          name: "Chicken Deal",
-          description: "1 whole chicken, $3 chips and 1.25L drink",
-          price: "$27.00",
-          popular: false,
-          image: chickenDealImg,
         },
         {
           name: "Fish & Chips Salad Plate",
@@ -151,10 +132,10 @@ const Menu = () => {
     {
       category: "Fish (Crumbed / Battered)",
       items: [
-        { name: "Cod", description: "Add grilled +$1", price: "$7.50", popular: true, image: codFishImg },
+        { name: "Cod", description: "Add grilled +$1", price: "$8.00", popular: true, image: codFishImg },
         { name: "Hoki", description: "Add grilled +$1", price: "$8.00", image: hokiFishImg },
-        { name: "Snapper", description: "Add grilled +$1", price: "$9.50", image: snapperFishImg },
-        { name: "Barramundi", description: "Add grilled +$1", price: "$9.50", image: barramundiFishImg },
+        { name: "Snapper", description: "Add grilled +$1", price: "$10.50", image: snapperFishImg },
+        { name: "Barramundi", description: "Add grilled +$1", price: "$10.50", image: barramundiFishImg },
       ],
     },
     {
@@ -176,8 +157,8 @@ const Menu = () => {
         },
         {
           name: "Spicy Chicken Wings",
-          description: "5 for $8.50",
-          price: "$8.50",
+          description: "5 for $9.50 and $2.00 each",
+          price: "$9.50",
           popular: false,
           image: spicyChickenWingsImg,
         },
@@ -190,8 +171,8 @@ const Menu = () => {
         },
         {
           name: "Fish Cocktails",
-          description: "5 for $6.50",
-          price: "$6.50",
+          description: "5 for $6.80",
+          price: "$6.80",
           popular: true,
           image: fishCocktailsImg,
         },
@@ -204,14 +185,14 @@ const Menu = () => {
         },
         {
           name: "Potato Scallops",
-          description: "6 for $7.50",
-          price: "$7.50",
+          description: "6 for $8.50 and $2.00 each",
+          price: "$8.50",
           popular: true,
           image: potatoScallopsImg,
         },
         {
           name: "Calamari Rings",
-          description: "8 for $7.00)",
+          description: "8 for $7.00",
           price: "$7.00",
           popular: true,
           image: calamariRingsImg,
@@ -242,11 +223,11 @@ const Menu = () => {
     {
       category: "Burgers & Sandwiches",
       items: [
-        { name: "Hamburger", description: "", price: "$7.50", popular: true, image: hamburgerImg },
+        { name: "Hamburger", description: "", price: "$8.00", popular: true, image: hamburgerImg },
         { name: "Hamburger w/ Lot", description: "", price: "$10.50", popular: true, image: hamburgerLotImg },
         { name: "Steak Burger", description: "", price: "$8.50", popular: true, image: steakBurgerImg },
         { name: "Steak Burger w/ Lot", description: "", price: "$11.50", popular: true, image: steakBurgerLotImg },
-        { name: "Bacon & Egg Burger", description: "", price: "$7.50", image: baconEggBurgerImg },
+        { name: "Bacon & Egg Burger", description: "", price: "$8.00", image: baconEggBurgerImg },
         { name: "Chicken Burger", description: "", price: "$8.50", image: chickenBurgerImg },
         { name: "Fish Burger", description: "", price: "$9.50", image: fishBurgerImg },
         { name: "Chicken Salad Sandwich", description: "", price: "$7.00", image: chickenSaladSandwichImg },
@@ -257,42 +238,32 @@ const Menu = () => {
       items: [
         { name: "Chicken Gravy", description: "", price: "$7.00", image: chickenGravyRollImg },
         { name: "Chicken Mayo", description: "", price: "$7.00", image: chickenMayoRollImg },
-        { name: "Steak Gravy", description: "", price: "$7.50", image: steakGravyRollImg },
+        { name: "Steak Gravy", description: "", price: "$8.50", image: steakGravyRollImg },
         { name: "Hot Dog", description: "", price: "$5.00", image: hotDogImg },
         { name: "Hot Dog & Cheese", description: "", price: "$5.50", image: hotDogCheeseImg },
         { name: "Hot Dog w/ Lot", description: "", price: "$7.00", image: hotDogLotImg },
-        { name: "Kabana Dog", description: "", price: "$6.00", image: kabanaDogImg },
-        { name: "Kabana Dog w/ Lot", description: "", price: "$8.50", image: kabanaDogLotImg },
+        { name: "Kabana Dog", description: "", price: "$7.00", image: kabanaDogImg },
+        { name: "Kabana Dog w/ Lot", description: "", price: "$9.50", image: kabanaDogLotImg },
       ],
     },
     {
       category: "Snacks",
       items: [
-        { name: "Kabana", description: "", price: "$3.80", image: kabanaImg },
-        { name: "Cheese Kabana", description: "", price: "$3.80", image: cheeseKabanaImg },
+        { name: "Kabana", description: "", price: "$4.00", image: kabanaImg },
         { name: "Chiko Roll", description: "", price: "$3.80", image: chikoRollImg },
         { name: "Spring Roll", description: "", price: "$3.80", image: springRollImg },
         { name: "Crumbed Sausage", description: "", price: "$3.50", image: crumbedSausageImg },
-        { name: "Bacon & Cheese Crumbed Sausage", description: "", price: "$4.00", image: baconCheeseSausageImg },
-        { name: "Battered Sav", description: "", price: "$3.50", image: batteredSavImg },
+        { name: "Battered Sav", description: "", price: "$4.00", image: batteredSavImg },
         { name: "Fish Cake", description: "", price: "$3.00", image: fishCakeImg },
         { name: "Chicken & Cheese Schnitzel", description: "", price: "$3.80", image: chickenCheeseSchnitzelImg },
-        { name: "Mini Dim Sim", description: "", price: "$1.20", image: miniDimSimImg },
+        { name: "Mini Dim Sim", description: "", price: "$1.50", image: miniDimSimImg },
         { name: "Chicken Dim Sim", description: "", price: "$3.50", image: chickenDimSimImg },
-        { name: "Corn Jack", description: "", price: "$3.50", image: cornJackImg },
-        { name: "Beef Croquette", description: "", price: "$2.00", image: beefCroquetteImg },
+        { name: "Corn Jack", description: "", price: "$4.00", image: cornJackImg },
         { name: "Seafood Stick", description: "", price: "$1.50", image: seafoodStickImg },
         { name: "Pineapple Fritter", description: "", price: "$1.80", image: pineappleFritterImg },
         { name: "Pork Sausage", description: "", price: "$4.50", image: porkSausageImg },
-        { name: "Ham & Cheese Potato Scallop", description: "", price: "$4.00", image: hamCheeseScallopImg },
-      ],
-    },
-    {
-      category: "Chicken",
-      items: [
-        { name: "Whole", description: "", price: "$19.00" },
-        { name: "Half", description: "", price: "$9.00" },
-        { name: "Quarter", description: "", price: "$6.00" },
+        { name: "Ham & Cheese Potato Scallop", description: "", price: "$4.50", image: hamCheeseScallopImg },
+        { name: "Lasagna Topper", description: "", price: "$4.50" },
       ],
     },
     {
@@ -305,6 +276,13 @@ const Menu = () => {
         { name: "Small", description: "", price: "$1.50" },
         { name: "Medium", description: "", price: "$2.50" },
         { name: "Large", description: "", price: "$3.50" },
+      ],
+    },
+    {
+      category: "Fried Rice",
+      items: [
+        { name: "Ham", description: "", price: "$9.00" },
+        { name: "Chicken", description: "", price: "$9.00" },
       ],
     },
   ];
