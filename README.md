@@ -19,9 +19,10 @@ Other scripts:
 - `npm run preview` serves the built site
 - `npm run lint` runs ESLint
 
-## Updating prices (no code needed)
+## Updating prices and favourites (no code needed)
 
-Sign in at **https://costastakeaway.info/admin** to change prices. Saved prices are
+Sign in at **https://costastakeaway.info/admin** to change prices, mark items as popular
+(★ badge on the menu and in the ticker) and pick the front page's "Readers' favourites". Saved prices are
 stored in Supabase and show on the website immediately. Every change is logged with
 who made it, under "Recent changes".
 
@@ -30,8 +31,10 @@ item without a saved price, and for everything if Supabase can't be reached.
 
 ### One-time Supabase setup
 
-1. In the Supabase dashboard, open **SQL Editor**, paste in
-   `supabase/migrations/20261106000000_menu_prices.sql` and run it. (It's safe to run again.)
+1. In the Supabase dashboard, open **SQL Editor** and run these two files, in order
+   (both are safe to run again):
+   - `supabase/migrations/20261106000000_menu_prices.sql`
+   - `supabase/migrations/20261107000000_menu_settings.sql`
 2. **Authentication → Users → Add user**: enter the admin's email and a password, and tick
    "Auto Confirm User".
 3. Back in **SQL Editor**, make that account an admin (change the email):

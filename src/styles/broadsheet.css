@@ -2307,3 +2307,68 @@
     padding: 0 14px;
   }
 }
+
+/* ---------- Price desk: favourites ---------- */
+
+.cm-admin__toggle[aria-pressed="true"] {
+  background: var(--mustard) !important;
+  color: #1d1915 !important;
+  border-color: #1d1915 !important;
+}
+.cm-admin__toggle b {
+  font: 800 0.8rem var(--mono);
+}
+.cm-admin__sep {
+  width: 1px;
+  height: 24px;
+  background: var(--ink-faint);
+  margin: 0 4px;
+}
+.cm-admin__front {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cm-admin__front[data-dirty] {
+  background: color-mix(in srgb, var(--mustard) 22%, transparent);
+}
+.cm-admin__front li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-bottom: 1px dashed var(--ink-faint);
+}
+.cm-admin__front li:last-child {
+  border-bottom: 0;
+}
+.cm-admin__front b {
+  flex: 1;
+  font-family: var(--serif);
+  font-weight: 600;
+}
+.cm-admin__rank {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font: 700 0.8rem var(--mono);
+}
+@media (max-width: 520px) {
+  .cm-admin__row {
+    flex-wrap: wrap;
+  }
+  .cm-admin__name {
+    flex: 1 1 100%;
+  }
+  .cm-admin__price {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

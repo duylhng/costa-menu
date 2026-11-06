@@ -26,8 +26,8 @@ const SiteFooter = () => (
           <div className="cm-kicker">The fine print</div>
           <h4>Corrections &amp; clarifications</h4>
           <p className="cm-fineprint">
-            All prices on this website are a guide only and change often. In-store prices always apply. Please call to
-            confirm current pricing. No newspapers were harmed in the making of this website, though several potatoes were.
+            All prices on this website are a guide. In-store prices apply. Call us to confirm a price before you
+            order. No newspapers were harmed in the making of this website, though several potatoes were.
           </p>
         </div>
       </div>

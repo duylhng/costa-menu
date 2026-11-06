@@ -49,6 +49,41 @@ export type Database = {
         Update: never
         Relationships: []
       }
+      menu_settings: {
+        Row: {
+          key: string
+          value: Json
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          key: string
+          value: Json
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          key?: string
+          value?: Json
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      menu_settings_history: {
+        Row: {
+          id: number
+          key: string
+          old_value: Json | null
+          new_value: Json | null
+          changed_at: string
+          changed_by: string | null
+          changed_by_email: string | null
+        }
+        Insert: never
+        Update: never
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

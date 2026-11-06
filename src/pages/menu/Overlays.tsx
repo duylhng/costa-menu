@@ -89,8 +89,7 @@ export function ItemDialog({ item, onClose, onAdd }: ItemDialogProps) {
               )}
 
               <p className="rounded-md border-2 border-dashed border-[#c9442a] px-3 py-2 text-xs leading-relaxed">
-                <b className="text-[#c9442a]">Guide price only.</b> Prices change often and may differ in store. The
-                in-store price applies.
+                <b className="text-[#c9442a]">Guide price.</b> The in-store price applies.
               </p>
 
               <div className="flex flex-wrap items-center justify-between gap-4 border-t-2 border-dashed border-[var(--ink)]/30 pt-4">
@@ -152,7 +151,7 @@ function orderText(order: Order) {
     const name = displayName(l.item) + (l.option ? ` (${l.option.label.toLowerCase()})` : "");
     return `${l.qty} × ${name} — ${formatPrice(l.totalCents)}`;
   });
-  return [`My order for Costa's Takeaway:`, ...lines, `Guide total: ${formatPrice(order.totalCents)} (prices may have changed, in-store price applies)`].join("\n");
+  return [`My order for Costa's Takeaway:`, ...lines, `Guide total: ${formatPrice(order.totalCents)} (guide only, in-store prices apply)`].join("\n");
 }
 
 export function ParcelSheet({ order, open, onOpenChange }: { order: Order; open: boolean; onOpenChange: (o: boolean) => void }) {
@@ -238,9 +237,8 @@ export function ParcelSheet({ order, open, onOpenChange }: { order: Order; open:
             <span className="cm-receipt__head text-4xl font-black tabular-nums">{formatPrice(order.totalCents)}</span>
           </div>
           <p className="mt-3 rounded-md border-2 border-dashed border-[#c9442a] px-3 py-2 text-[0.72rem] leading-relaxed">
-            <b className="text-[#c9442a]">Prices are a guide only</b> and change often, so your total in store may be
-            different. The in-store price applies. This is a planning list, not an online order: call us and read it out.
-            Pickup only.
+            <b className="text-[#c9442a]">This total is a guide.</b> The in-store price applies. This is a planning list,
+            not an online order: call us and read it out. Pickup only.
           </p>
           <a
             href={SHOP.phoneHref}

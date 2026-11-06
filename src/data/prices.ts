@@ -1,8 +1,8 @@
 /**
- * Live prices.
+ * Live prices and menu settings (popular items, front-page favourites).
  *
- * The prices written in menu.ts are the built-in defaults. Prices saved from /admin
- * live in the Supabase `menu_prices` table and override those defaults.
+ * What's written in menu.ts is the built-in default. Anything saved from /admin lives
+ * in the Supabase `menu_prices` / `menu_settings` tables and overrides those defaults.
  *
  * How visitors get them, fastest first:
  *   1. The last live prices this browser saw are cached in localStorage and applied
@@ -12,7 +12,7 @@
  *   3. If Supabase is unreachable or not set up, the built-in prices are used.
  */
 import { useSyncExternalStore } from "react";
-import { ALL_ITEMS, MENU } from "./menu";
+import { ALL_ITEMS, DEFAULT_FRONT_PAGE, FRONT_PAGE_MAX, ITEM_INDEX, MENU, type IndexedItem } from "./menu";
 
 export interface PriceRow {
   item_id: string;
@@ -20,7 +20,14 @@ export interface PriceRow {
   updated_at?: string;
 }
 
-const CACHE_KEY = "costa:live-prices:v1";
+export type SettingKey = "popular" | "front_page";
+
+export interface SettingRow {
+  key: SettingKey;
+  value: unknown;
+}
+
+const CACHE_KEY = "costa:live-menu:v2";
 const FETCH_TIMEOUT_MS = 5000;
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
@@ -28,6 +35,11 @@ const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | u
 
 /** The prices written in the code, captured before any overrides are applied. */
 export const DEFAULT_PRICES: ReadonlyMap<string, number> = new Map(ALL_ITEMS.map((i) => [i.id, i.priceCents]));
+
+/** The items marked `popular: true` in the code. */
+export const DEFAULT_POPULAR: ReadonlySet<string> = new Set(ALL_ITEMS.filter((i) => i.popular).map((i) => i.id));
+
+let frontPage: string[] = [...DEFAULT_FRONT_PAGE];
 
 /* -------------------------------------------------------------------------- */
 /*  A tiny external store so React re-renders when prices change               */
@@ -94,11 +106,54 @@ export function applyPrices(rows: PriceRow[]): boolean {
   return changed;
 }
 
-/** Apply prices cached from this browser's previous visit (synchronous, before first render). */
+/** Keep only ids that exist on the menu, without duplicates. Returns null if the value isn't a list. */
+export function cleanIdList(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null;
+  return [...new Set(value.filter((v): v is string => typeof v === "string" && ITEM_INDEX.has(v)))];
+}
+
+/** Apply popular / front-page settings. A missing row means "use the built-in default". */
+export function applySettings(rows: SettingRow[]): boolean {
+  const byKey = new Map(rows.map((r) => [r.key, r.value]));
+  const popular = new Set(cleanIdList(byKey.get("popular")) ?? DEFAULT_POPULAR);
+  const front = (cleanIdList(byKey.get("front_page")) ?? [...DEFAULT_FRONT_PAGE]).slice(0, FRONT_PAGE_MAX);
+
+  let changed = false;
+  for (const indexed of ALL_ITEMS) {
+    const next = popular.has(indexed.id);
+    if (Boolean(indexed.popular) !== next) {
+      indexed.popular = next;
+      changed = true;
+    }
+  }
+  for (const category of MENU) for (const item of category.items) item.popular = popular.has(item.id);
+
+  if (front.join() !== frontPage.join()) {
+    frontPage = front;
+    changed = true;
+  }
+  if (changed) emit();
+  return changed;
+}
+
+/** The front page's "Readers' favourites", in order. */
+export function frontPageItems(): IndexedItem[] {
+  return frontPage.map((id) => ITEM_INDEX.get(id)!).filter(Boolean);
+}
+
+interface CachedMenu {
+  prices: PriceRow[];
+  settings: SettingRow[];
+}
+
+/** Apply live data cached from this browser's previous visit (synchronous, before first render). */
 export function applyCachedPrices() {
   try {
     const raw = localStorage.getItem(CACHE_KEY);
-    if (raw) applyPrices(JSON.parse(raw) as PriceRow[]);
+    if (!raw) return;
+    const cached = JSON.parse(raw) as CachedMenu;
+    applyPrices(cached.prices ?? []);
+    applySettings(cached.settings ?? []);
   } catch {
     /* ignore: private mode, corrupted cache, etc. */
   }
@@ -108,32 +163,45 @@ export function livePricesConfigured(): boolean {
   return Boolean(SUPABASE_URL && SUPABASE_KEY);
 }
 
-/** Fetch the current overrides from Supabase and apply them. Never throws. */
+async function fetchTable<T>(path: string, signal: AbortSignal): Promise<T[] | null> {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+      headers: { apikey: SUPABASE_KEY!, Authorization: `Bearer ${SUPABASE_KEY}` },
+      signal,
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    const rows = await res.json();
+    return Array.isArray(rows) ? (rows as T[]) : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Fetch current prices and settings from Supabase and apply them. Never throws. */
 export async function loadLivePrices(): Promise<"live" | "unavailable"> {
   if (!livePricesConfigured()) return "unavailable";
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const [prices, settings] = await Promise.all([
+    fetchTable<PriceRow>("menu_prices?select=item_id,price_cents,updated_at", controller.signal),
+    fetchTable<SettingRow>("menu_settings?select=key,value", controller.signal),
+  ]);
+  window.clearTimeout(timer);
+
+  // Each table is applied independently, so one failing never blocks the other.
+  if (prices) applyPrices(prices);
+  if (settings) applySettings(settings);
+  if (!prices && !settings) return "unavailable";
+
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/menu_prices?select=item_id,price_cents,updated_at`, {
-      headers: { apikey: SUPABASE_KEY!, Authorization: `Bearer ${SUPABASE_KEY}` },
-      signal: controller.signal,
-      cache: "no-store",
-    });
-    if (!res.ok) return "unavailable";
-    const rows = (await res.json()) as PriceRow[];
-    if (!Array.isArray(rows)) return "unavailable";
-    applyPrices(rows);
-    try {
-      localStorage.setItem(CACHE_KEY, JSON.stringify(rows));
-    } catch {
-      /* ignore */
-    }
-    return "live";
+    const previous = JSON.parse(localStorage.getItem(CACHE_KEY) ?? "{}") as Partial<CachedMenu>;
+    const next: CachedMenu = { prices: prices ?? previous.prices ?? [], settings: settings ?? previous.settings ?? [] };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(next));
   } catch {
-    return "unavailable";
-  } finally {
-    window.clearTimeout(timer);
+    /* ignore */
   }
+  return "live";
 }
 
 /** Parse what someone typed into a price box ("8.5", "$8.50", "850c") into cents. */

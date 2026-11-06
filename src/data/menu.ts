@@ -260,6 +260,20 @@ export const ITEM_INDEX: Map<string, IndexedItem> = new Map(
 
 export const ALL_ITEMS: IndexedItem[] = Array.from(ITEM_INDEX.values());
 
+/**
+ * Built-in "Readers' favourites" for the front page, in order (max 6). Can be
+ * changed from /admin; this list is used until then, or if Supabase is unreachable.
+ */
+export const DEFAULT_FRONT_PAGE: readonly string[] = [
+  "seafood-basket",
+  "cod",
+  "calamari-rings",
+  "potato-scallops",
+  "steak-burger-lot",
+  "special-for-two",
+];
+export const FRONT_PAGE_MAX = 6;
+
 /** Full display name, e.g. "Small" in Gravy becomes "Small Gravy". */
 export function displayName(item: IndexedItem): string {
   if (item.category.id === "gravy") return `${item.name} Gravy`;

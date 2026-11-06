@@ -153,7 +153,7 @@ export function PriceNotice({ compact = false }: { compact?: boolean }) {
       <p className="cm-notice-strip" role="note">
         <AlertTriangle size={16} strokeWidth={2.4} aria-hidden="true" />
         <span>
-          <b>Prices shown are a guide only</b> and change often. The in-store price always applies.
+          <b>Prices shown are a guide.</b> The price at the counter is the price you pay.
         </span>
       </p>
     );
@@ -170,9 +170,9 @@ export function PriceNotice({ compact = false }: { compact?: boolean }) {
             Prices on this page are a guide only.
           </h2>
           <p className="cm-notice__text">
-            Our prices change regularly and this website is <strong>not always up to date</strong>. The price at the counter
-            is the price you pay, so if it's different from what you see here, the in-store price applies. Please call{" "}
-            <a href={SHOP.phoneHref}>{SHOP.phoneDisplay}</a> to check today's prices.
+            The price at the counter is the price you pay. If anything here is different from what you're charged in
+            store, <strong>the in-store price applies</strong>. To check a price before you come in, call{" "}
+            <a href={SHOP.phoneHref}>{SHOP.phoneDisplay}</a>.
           </p>
         </div>
       </div>

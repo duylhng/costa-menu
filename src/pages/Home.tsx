@@ -1,18 +1,12 @@
 import type { CSSProperties } from "react";
-import { usePriceVersion } from "@/data/prices";
+import { frontPageItems, usePriceVersion } from "@/data/prices";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
-import { ALL_ITEMS, HERO_PHOTO, SHOP, displayName, formatPrice } from "@/data/menu";
+import { HERO_PHOTO, SHOP, displayName, formatPrice, type IndexedItem } from "@/data/menu";
 import { Masthead, PriceNotice, Ticker, useDocumentTitle } from "@/components/site/Broadsheet";
 import { useReveal, useTilt } from "@/components/site/hooks";
 
-/** Six of the most-ordered items, picked across categories so the front page isn't all burgers. */
-const FAVOURITES = ["seafood-basket", "cod", "calamari-rings", "potato-scallops", "steak-burger-lot", "special-for-two"]
-  .map((id) => ALL_ITEMS.find((i) => i.id === id))
-  .filter((i): i is NonNullable<typeof i> => Boolean(i));
-
-function FavouriteCard({ id, index }: { id: string; index: number }) {
-  const item = FAVOURITES.find((f) => f.id === id)!;
+function FavouriteCard({ item, index }: { item: IndexedItem; index: number }) {
   const ref = useTilt<HTMLAnchorElement>(7);
   return (
     <Link
@@ -48,7 +42,8 @@ function FavouriteCard({ id, index }: { id: string; index: number }) {
 
 const Home = () => {
   useDocumentTitle("");
-  usePriceVersion(); // re-render when live prices arrive
+  usePriceVersion(); // re-render when live prices / favourites arrive
+  const favourites = frontPageItems();
   const lead = useReveal<HTMLDivElement>();
   const favs = useReveal<HTMLDivElement>();
   const boxes = useReveal<HTMLDivElement>();
@@ -103,28 +98,30 @@ const Home = () => {
         </section>
 
         {/* ---------------------------------------------------------------- Favourites */}
-        <section className="cm-section" aria-labelledby="favs-title">
-          <header className="cm-section__head">
-            <span className="cm-section__folio" aria-hidden="true">
-              A2
-            </span>
-            <div>
-              <div className="cm-kicker">As voted by the queue</div>
-              <h2 id="favs-title" className="cm-section__title">
-                Readers' favourites
-              </h2>
+        {favourites.length > 0 && (
+          <section className="cm-section" aria-labelledby="favs-title">
+            <header className="cm-section__head">
+              <span className="cm-section__folio" aria-hidden="true">
+                A2
+              </span>
+              <div>
+                <div className="cm-kicker">As voted by the queue</div>
+                <h2 id="favs-title" className="cm-section__title">
+                  Readers' favourites
+                </h2>
+              </div>
+              <Link to="/menu" className="cm-section__count cm-inline-link">
+                Full menu →
+              </Link>
+            </header>
+            <div ref={favs} className="cm-gallery cm-gallery--3 cm-reveal">
+              {favourites.map((item, i) => (
+                <FavouriteCard key={item.id} item={item} index={i} />
+              ))}
             </div>
-            <Link to="/menu" className="cm-section__count cm-inline-link">
-              Full menu →
-            </Link>
-          </header>
-          <div ref={favs} className="cm-gallery cm-gallery--3 cm-reveal">
-            {FAVOURITES.map((item, i) => (
-              <FavouriteCard key={item.id} id={item.id} index={i} />
-            ))}
-          </div>
-          <PriceNotice compact />
-        </section>
+            <PriceNotice compact />
+          </section>
+        )}
 
         {/* ---------------------------------------------------------------- Info boxes */}
         <section className="cm-section" aria-label="Opening hours and contact">
