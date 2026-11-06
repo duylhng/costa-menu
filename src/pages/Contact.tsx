@@ -31,7 +31,7 @@ const Contact = () => {
             <Phone className="h-12 w-12 text-primary mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-3">Call to Order</h3>
             <a
-              href="tel:+61234567890"
+              href="tel:0405353467"
               className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors block"
             >
               0405 353 467
