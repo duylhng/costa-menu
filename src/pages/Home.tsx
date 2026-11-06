@@ -69,7 +69,7 @@ const Home = () => {
                 <h2 className="text-2xl font-bold">Call to Order</h2>
               </div>
               <a
-                href="tel:+61234567890"
+                href="tel:0405353467"
                 className="text-3xl font-bold text-primary hover:text-primary/80 transition-colors"
               >
                 0405 353 467
