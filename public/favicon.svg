@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Costa's Takeaway"><title>Costa's Takeaway</title><circle cx="256" cy="256" r="252" fill="#c9442a"/><circle cx="256" cy="256" r="214" fill="#f3ecdf" stroke="#1d1915" stroke-width="12"/><g transform="translate(256 266) scale(2.25) translate(-124 -112)" stroke="#1d1915" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round">
+  <circle cx="100" cy="66" r="15" fill="#c9442a"/><circle cx="122" cy="58" r="17" fill="#c9442a"/><circle cx="143" cy="68" r="14" fill="#c9442a"/>
+  <path d="M78 178 C 70 140, 78 92, 120 80 C 160 90, 170 140, 162 178 L150 170 L140 180 L128 170 L116 180 L104 170 L92 180 Z" fill="#fffaf2"/>
+  <path d="M140 112 L170 120 L140 130 Z" fill="#e2a12f"/>
+  <path d="M136 132 C 150 136, 150 160, 138 162 C 128 160, 128 140, 136 132 Z" fill="#c9442a"/>
+  <path d="M110 108 q9 -8 18 0" fill="none" stroke-width="6.32"/>
+</g></svg>

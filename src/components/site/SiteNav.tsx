@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Menu as MenuIcon, Moon, Phone, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
-import logo from "@/assets/costa-logo.webp";
+import logo from "@/assets/costas-icon.svg";
 import { SHOP } from "@/data/menu";
 import { useOpenStatus } from "./hooks";
 
