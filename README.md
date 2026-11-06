@@ -22,6 +22,12 @@ Other scripts:
 ## Updating the menu
 
 Every menu item and price lives in `src/data/menu.ts`. Prices are stored in cents
-(e.g. `priceCents: 850` is $8.50). Change a price there and redeploy.
+(e.g. `priceCents: 850` is $8.50). Change a price there and push to `main`.
 
 The menu page itself is `src/pages/Menu.tsx`, with its components and styles in `src/pages/menu/`.
+
+## Deployment
+
+The site is hosted on GitHub Pages at https://costastakeaway.info. Every push to `main`
+builds and deploys automatically via `.github/workflows/deploy.yml` (usually live within
+2–3 minutes). The custom domain is set by `public/CNAME`; DNS is managed at IONOS.
