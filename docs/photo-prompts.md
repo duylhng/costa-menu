@@ -21,7 +21,7 @@ Chips, gravy and fried rice don't show photos on the current menu design, so the
 ### Hamburger Deal
 
 Save as **`hamburger-deal.png`**  
-⚠ The menu says the deal can be upgraded to burgers with the lot; this shows plain burgers.
+⚠ The deal can be upgraded to burgers with the lot (+$12); this shows plain burgers.
 
 ```text
 Realistic food photograph for a takeaway menu. Four Australian takeaway hamburgers in soft white buns (beef patty, shredded lettuce, tomato, onion, tomato sauce), a pile of golden hot chips, and a 1.25 litre bottle of soft drink beside them. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
@@ -214,8 +214,7 @@ Realistic food photograph for a takeaway menu. An Australian takeaway hamburger:
 
 ### Hamburger w/ Lot
 
-Save as **`hamburger-lot.png`**  
-⚠ Check what 'the lot' includes at the shop (beetroot? pineapple?) and edit the list.
+Save as **`hamburger-lot.png`**
 
 ```text
 Realistic food photograph for a takeaway menu. An Australian hamburger 'with the lot': soft white bun, beef patty, fried egg, bacon, cheese, a slice of beetroot, a ring of pineapple, shredded lettuce, tomato, onion and sauce. Tall and messy, beetroot juice visible. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
@@ -231,8 +230,7 @@ Realistic food photograph for a takeaway menu. An Australian steak burger: soft 
 
 ### Steak Burger w/ Lot
 
-Save as **`steak-burger-lot.png`**  
-⚠ Same as the hamburger: check what 'the lot' includes.
+Save as **`steak-burger-lot.png`**
 
 ```text
 Realistic food photograph for a takeaway menu. An Australian steak burger 'with the lot': soft white bun, thin grilled minute steak, fried egg, bacon, cheese, beetroot, pineapple, lettuce, tomato, onion and sauce. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
@@ -248,11 +246,10 @@ Realistic food photograph for a takeaway menu. A bacon and egg burger: soft whit
 
 ### Chicken Burger
 
-Save as **`chicken-burger.png`**  
-⚠ Check if the shop's chicken is crumbed or grilled.
+Save as **`chicken-burger.png`**
 
 ```text
-Realistic food photograph for a takeaway menu. A chicken burger: soft white bun, a golden crumbed chicken fillet, shredded lettuce, tomato and mayonnaise. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
+Realistic food photograph for a takeaway menu. A chicken schnitzel burger: a whole golden crumbed chicken schnitzel in a soft white bun, edges of the schnitzel sticking out past the bun, nothing else on it. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
 ```
 
 ### Fish Burger
