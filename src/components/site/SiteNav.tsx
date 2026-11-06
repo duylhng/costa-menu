@@ -7,9 +7,9 @@ import { SHOP } from "@/data/menu";
 import { useOpenStatus } from "./hooks";
 
 const LINKS = [
-  { to: "/", label: "Front page", folio: "A", end: true },
-  { to: "/menu", label: "Menu", folio: "B", end: false },
-  { to: "/contact", label: "Find us", folio: "C", end: false },
+  { to: "/", label: "Home", end: true },
+  { to: "/menu", label: "Menu", end: false },
+  { to: "/contact", label: "Find us", end: false },
 ];
 
 function ThemeToggle() {
@@ -49,7 +49,6 @@ const SiteNav = () => {
         <div className="cm-nav__links">
           {LINKS.map((l) => (
             <NavLink key={l.to} to={l.to} end={l.end} className="cm-nav__link">
-              <small>{l.folio}</small>
               {l.label}
             </NavLink>
           ))}
@@ -82,7 +81,6 @@ const SiteNav = () => {
         <div className="cm-wrap">
           {LINKS.map((l) => (
             <NavLink key={l.to} to={l.to} end={l.end} className="cm-nav__drawer-link">
-              <small>{l.folio}</small>
               {l.label}
             </NavLink>
           ))}

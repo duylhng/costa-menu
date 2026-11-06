@@ -107,23 +107,17 @@ function FeatureCard({ item, lead, wide, index }: { item: IndexedItem; lead: boo
       }}
     >
       <span className="cm-tilt__glare" />
-      {item.popular && (
-        <span className="cm-stamp" aria-label="Local favourite">
-          <span>
-            <Star fill="currentColor" strokeWidth={0} />
-            Local
-            <br />
-            fave
-          </span>
-        </span>
-      )}
       {item.image && (
-        <div className="cm-feature__media cm-halftone">
+        <div className="cm-feature__media">
           <img src={item.image} alt={item.name} loading={index < 3 ? "eager" : "lazy"} decoding="async" />
+          {item.popular && (
+            <span className="cm-chip">
+              <Star size={10} fill="currentColor" strokeWidth={0} /> Popular
+            </span>
+          )}
         </div>
       )}
       <div className="cm-feature__body">
-        <span className="cm-kicker">No. {String(index + 1).padStart(2, "0")} · {item.category.title}</span>
         <h3 className="cm-feature__name">{item.name}</h3>
         {item.description && <p className="cm-feature__desc">{item.description}</p>}
         <div className="cm-feature__foot">
@@ -155,7 +149,7 @@ function GalleryCard({ item, index }: { item: IndexedItem; index: number }) {
     >
       <span className="cm-tilt__glare" />
       {item.image && (
-        <div className="cm-card__media cm-halftone">
+        <div className="cm-card__media">
           <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
           {item.popular && (
             <span className="cm-chip">
@@ -168,16 +162,6 @@ function GalleryCard({ item, index }: { item: IndexedItem; index: number }) {
         <div>
           <h3 className="cm-card__name">{item.name}</h3>
           <span className="cm-price cm-card__price">{formatPrice(item.priceCents)}</span>
-          {item.options && (
-            <div className="cm-card__opts">
-              {item.options.map((o) => (
-                <span key={o.id} className="cm-chip cm-chip--ghost">
-                  {o.label}
-                  {o.extraCents ? ` +${formatPrice(o.extraCents).replace(".00", "")}` : ""}
-                </span>
-              ))}
-            </div>
-          )}
         </div>
         <AddButton item={item} />
       </div>
@@ -242,11 +226,6 @@ function LedgerRow({ item, index, showThumb = true }: { item: IndexedItem; index
 export function MenuSection({ category }: { category: MenuCategory }) {
   const reveal = useReveal<HTMLDivElement>();
   const items = category.items.map((item) => ({ ...item, category }));
-  const prices = items.map((i) => i.priceCents);
-  const range =
-    Math.min(...prices) === Math.max(...prices)
-      ? formatPrice(prices[0])
-      : `${formatPrice(Math.min(...prices))} – ${formatPrice(Math.max(...prices))}`;
 
   let body: JSX.Element;
   switch (category.layout) {
@@ -288,20 +267,10 @@ export function MenuSection({ category }: { category: MenuCategory }) {
   return (
     <section id={category.id} className="cm-section" aria-labelledby={`${category.id}-title`}>
       <header className="cm-section__head">
-        <span className="cm-section__folio" aria-hidden="true">
-          {category.folio}
-        </span>
-        <div>
-          <div className="cm-kicker">{category.kicker}</div>
-          <h2 id={`${category.id}-title`} className="cm-section__title">
-            {category.title}
-          </h2>
-        </div>
-        <div className="cm-section__count">
-          {items.length} {items.length === 1 ? "item" : "items"}
-          <br />
-          {range}
-        </div>
+        <h2 id={`${category.id}-title`} className="cm-section__title">
+          {category.title}
+        </h2>
+        {category.id === "fish" && <span className="cm-section__note">Battered, crumbed or grilled (+$1)</span>}
       </header>
       {body}
     </section>
@@ -314,25 +283,11 @@ export function ClassifiedsSection({ categories }: { categories: MenuCategory[] 
   return (
     <section className="cm-section" aria-label="Sides">
       <header className="cm-section__head">
-        <span className="cm-section__folio" aria-hidden="true">
-          D
-        </span>
-        <div>
-          <div className="cm-kicker">Classifieds</div>
-          <h2 className="cm-section__title">On the side</h2>
-        </div>
-        <div className="cm-section__count">
-          Chips · Gravy
-          <br />
-          Fried rice
-        </div>
+        <h2 className="cm-section__title">On the side</h2>
       </header>
       <div ref={reveal} className="cm-classifieds cm-reveal">
         {categories.map((category, ci) => (
           <div key={category.id} id={category.id} className="cm-classified" style={{ "--i": ci } as CSSProperties}>
-            <div className="cm-kicker">
-              {category.folio} · {category.kicker}
-            </div>
             <h3>{category.title}</h3>
             {category.items.map((item, i) => (
               <LedgerRow key={item.id} item={{ ...item, category }} index={i} showThumb={false} />

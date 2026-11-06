@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from "react";
-import { ExternalLink, MapPin, Navigation, Phone, ShoppingBag } from "lucide-react";
+import { ExternalLink, MapPin, Navigation, Phone } from "lucide-react";
 import { SHOP } from "@/data/menu";
-import { HoursTable, PageHead, useDocumentTitle } from "@/components/site/Broadsheet";
+import { PageHead, useDocumentTitle } from "@/components/site/Broadsheet";
 import { useReveal } from "@/components/site/hooks";
 
 const MAP_QUERY = encodeURIComponent("153 Smith Rd, Woodridge QLD 4114");
@@ -16,9 +16,7 @@ const Contact = () => {
 
   return (
     <>
-      <PageHead folio="C" kicker="Section C · Directions" title={<>Find <em>us</em></>}>
-        Shop 3 on Smith Road, Woodridge. Call ahead and your order will be hot and wrapped when you arrive.
-      </PageHead>
+      <PageHead title={<>Find <em>us</em></>}>Shop 3, 153 Smith Rd, Woodridge. Pickup only.</PageHead>
 
       <div className="cm-wrap">
         <section className="cm-section" aria-label="Location and contact details">
@@ -47,12 +45,9 @@ const Contact = () => {
 
             <div className="cm-findus__details">
               <div className="cm-classified cm-box" style={{ "--i": 1 } as CSSProperties}>
-                <div className="cm-kicker">C1 · Address</div>
                 <h3>Shop 3, 153 Smith Rd</h3>
                 <p className="cm-fineprint" style={{ fontStyle: "normal" }}>
                   Woodridge, QLD 4114
-                  <br />
-                  Australia
                 </p>
                 <div className="cm-lead__actions">
                   <a href={DIRECTIONS} target="_blank" rel="noreferrer" className="cm-btn cm-btn--primary">
@@ -65,41 +60,17 @@ const Contact = () => {
               </div>
 
               <div className="cm-classified cm-box" style={{ "--i": 2 } as CSSProperties}>
-                <div className="cm-kicker">C2 · Orders</div>
                 <h3>Call to order</h3>
                 <a href={SHOP.phoneHref} className="cm-bigphone">
                   <Phone size={22} /> {SHOP.phoneDisplay}
                 </a>
-                <p className="cm-fineprint">Available during opening hours.</p>
+                <p className="cm-fineprint">We'll have it ready when you arrive. No delivery.</p>
               </div>
 
-              <div className="cm-classified cm-box" style={{ "--i": 3 } as CSSProperties}>
-                <div className="cm-kicker">C3 · Hours</div>
-                <h3>Opening hours</h3>
-                <HoursTable />
-              </div>
             </div>
           </div>
         </section>
 
-        <aside className="cm-section" aria-labelledby="pickup-title">
-          <div className="cm-notice cm-notice--ink">
-            <div className="cm-notice__badge" aria-hidden="true">
-              <ShoppingBag size={26} />
-            </div>
-            <div>
-              <div className="cm-kicker cm-notice__kicker">Service notice</div>
-              <h2 id="pickup-title" className="cm-notice__title">
-                Pickup only.
-              </h2>
-              <p className="cm-notice__text">
-                We don't deliver and we don't take online orders. Call{" "}
-                <a href={SHOP.phoneHref}>{SHOP.phoneDisplay}</a>, tell us what you'd like, and we'll have it ready at the
-                counter.
-              </p>
-            </div>
-          </div>
-        </aside>
       </div>
     </>
   );

@@ -2372,3 +2372,243 @@
     justify-content: flex-end;
   }
 }
+
+/* ==========================================================================
+   CALMER LAYOUT
+   Fewer rules, labels and boxes; more space. These override the earlier,
+   busier newspaper styles.
+   ========================================================================== */
+
+.cm-masthead {
+  padding-top: clamp(28px, 6vw, 64px);
+}
+.cm-title-row {
+  padding: 0;
+  align-items: center;
+}
+.cm-subtitle {
+  padding-top: clamp(4px, 2vw, 24px);
+  margin-bottom: 18px;
+}
+.cm-masthead .cm-status {
+  padding: 0;
+}
+.cm-masthead .cm-lead__actions {
+  margin-top: 24px;
+}
+.cm-masthead + .cm-ticker {
+  margin-top: clamp(32px, 6vw, 56px);
+}
+
+/* Status line: just the pill and one sentence */
+.cm-status {
+  gap: 12px;
+}
+
+/* Page heads */
+.cm-pagehead {
+  padding-top: clamp(32px, 6vw, 64px);
+  padding-bottom: 8px;
+}
+.cm-pagehead__title {
+  margin: 0;
+}
+.cm-pagehead__lede {
+  padding: 12px 0 16px;
+  margin: 0;
+}
+
+/* Sections: a heading and a thin line, nothing else */
+.cm-section {
+  padding-top: clamp(44px, 7vw, 80px);
+}
+.cm-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  border-bottom-width: 2px;
+  padding-bottom: 10px;
+  margin-bottom: clamp(18px, 2.5vw, 26px);
+}
+.cm-section__title {
+  margin: 0;
+}
+.cm-section__note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Price notice: one clear line */
+.cm-notice-strip {
+  margin: 20px 0 0;
+  padding: 14px 18px;
+  border: 2px solid var(--tomato);
+  border-radius: 8px;
+  font-size: 1rem;
+  align-items: center;
+  background: color-mix(in srgb, var(--tomato) 7%, var(--paper));
+}
+.cm-notice-strip svg {
+  margin-top: 0;
+}
+.cm-notice-strip__call {
+  color: var(--tomato);
+  font-weight: 700;
+  white-space: nowrap;
+  text-underline-offset: 3px;
+}
+
+/* Front page */
+.cm-lead {
+  align-items: center;
+}
+.cm-lead__title {
+  margin-top: 0;
+}
+.cm-lead__body {
+  font-size: 1.15rem;
+  margin: 0;
+}
+.cm-facts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 0;
+  padding: 0;
+}
+.cm-facts li {
+  padding: 6px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+.cm-card__arrow {
+  flex-shrink: 0;
+  color: var(--ink-soft);
+  transition: transform 0.3s var(--ease-out);
+}
+.cm-card:hover .cm-card__arrow {
+  transform: translateX(4px);
+  color: var(--tomato);
+}
+
+/* Cards: lighter shadows, room to breathe */
+.cm-feature {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.cm-feature:hover {
+  box-shadow: 6px 6px 0 var(--tomato);
+}
+.cm-feature__media .cm-chip {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  left: 12px;
+}
+.cm-feature__body {
+  gap: 6px;
+}
+
+/* Sides */
+.cm-classified h3 {
+  margin-top: 0;
+}
+
+/* Footer: two columns and one line of small print */
+.cm-colophon {
+  margin-top: clamp(56px, 9vw, 96px);
+  border-top-width: 2px;
+}
+.cm-colophon__grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 360px));
+  gap: clamp(28px, 6vw, 96px);
+}
+.cm-colophon h4 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+.cm-colophon__visit {
+  line-height: 1.7;
+  margin: 0 0 10px;
+}
+.cm-colophon__meta {
+  margin-top: clamp(28px, 4vw, 40px);
+  padding-top: 16px;
+  border-top: 1px solid var(--ink-faint);
+}
+
+@media (max-width: 640px) {
+  .cm-title-row {
+    padding-right: 0;
+  }
+  .cm-fryer {
+    top: 0;
+    width: 76px;
+  }
+  .cm-masthead .cm-lead__actions .cm-btn {
+    flex: 1 1 auto;
+  }
+  .cm-notice-strip {
+    font-size: 0.92rem;
+  }
+}
+
+/* Phones: compact side-by-side specials, no stray arrows */
+@media (max-width: 640px) {
+  .cm-card__arrow {
+    display: none;
+  }
+  .cm-feature-grid {
+    gap: 12px;
+  }
+  .cm-feature,
+  .cm-feature--lead {
+    flex-direction: row;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .cm-feature .cm-feature__media,
+  .cm-feature--lead .cm-feature__media {
+    width: 38%;
+    flex: none;
+    min-height: 0;
+    aspect-ratio: auto;
+    border-bottom: 0;
+    border-right: 1.5px solid var(--ink);
+  }
+  .cm-feature__media .cm-chip {
+    top: 8px;
+    left: 8px;
+    font-size: 0.58rem;
+    padding: 2px 6px;
+  }
+  .cm-feature__body {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    gap: 4px;
+  }
+  .cm-feature__name,
+  .cm-feature--lead .cm-feature__name {
+    font-size: 1.08rem;
+    font-weight: 700;
+  }
+  .cm-feature__desc {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .cm-feature__price,
+  .cm-feature--lead .cm-feature__price {
+    font-size: 1.15rem;
+  }
+  .cm-feature .cm-add {
+    --size: 34px;
+  }
+}

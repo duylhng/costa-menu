@@ -7,43 +7,33 @@ const SiteFooter = () => (
     <div className="cm-wrap">
       <div className="cm-colophon__grid">
         <div>
-          <div className="cm-kicker">Trading hours</div>
-          <h4>When the fryers are on</h4>
+          <h4>Opening hours</h4>
           <HoursTable />
         </div>
         <div>
-          <div className="cm-kicker">Where to find us</div>
-          <h4>Shop 3, 153 Smith Rd</h4>
-          <p className="cm-fineprint">
-            Woodridge, QLD 4114. Pickup only. Call ahead on{" "}
+          <h4>Visit</h4>
+          <p className="cm-colophon__visit">
+            Shop 3, 153 Smith Rd
+            <br />
+            Woodridge QLD 4114
+            <br />
             <a href={SHOP.phoneHref} className="cm-inline-link">
               {SHOP.phoneDisplay}
-            </a>{" "}
-            and we'll have it wrapped and ready when you arrive. <Link to="/contact" className="cm-inline-link">Directions →</Link>
+            </a>
           </p>
-        </div>
-        <div>
-          <div className="cm-kicker">The fine print</div>
-          <h4>Corrections &amp; clarifications</h4>
-          <p className="cm-fineprint">
-            All prices on this website are a guide. In-store prices apply. Call us to confirm a price before you
-            order. No newspapers were harmed in the making of this website, though several potatoes were.
-          </p>
+          <Link to="/contact" className="cm-inline-link">
+            Map &amp; directions →
+          </Link>
         </div>
       </div>
 
-      <div className="cm-colophon__base">
-        <span className="cm-colophon__wordmark" aria-hidden="true">
-          Costa's
-        </span>
-        <div className="cm-colophon__meta cm-kicker">
-          <span>© {new Date().getFullYear()} Costa's Takeaway</span>
-          <nav aria-label="Footer">
-            <Link to="/">Front page</Link>
-            <Link to="/menu">Menu</Link>
-            <Link to="/contact">Find us</Link>
-          </nav>
-        </div>
+      <div className="cm-colophon__meta cm-kicker">
+        <span>© {new Date().getFullYear()} Costa's Takeaway · Prices are a guide, in-store prices apply</span>
+        <nav aria-label="Footer">
+          <Link to="/">Home</Link>
+          <Link to="/menu">Menu</Link>
+          <Link to="/contact">Find us</Link>
+        </nav>
       </div>
     </div>
   </footer>

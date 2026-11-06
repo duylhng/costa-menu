@@ -55,7 +55,7 @@ export function ItemDialog({ item, onClose, onAdd }: ItemDialogProps) {
             <div className="grid gap-4 p-6">
               <div>
                 <div className="text-[0.68rem] uppercase tracking-[0.2em] opacity-60">
-                  {item.category.folio} · {item.category.title}
+                  {item.category.title}
                 </div>
                 <DialogTitle className="cm-receipt__head mt-1 text-3xl font-extrabold leading-tight tracking-tight">
                   {displayName(item)}
@@ -290,7 +290,7 @@ export function SearchPalette({
       <CommandList className="max-h-[60vh]">
         <CommandEmpty>No catch today. Try another word.</CommandEmpty>
         {MENU.map((category) => (
-          <CommandGroup key={category.id} heading={`${category.folio} · ${category.title}`}>
+          <CommandGroup key={category.id} heading={category.title}>
             {category.items.map((raw) => {
               const item = ALL_ITEMS.find((i) => i.id === raw.id)!;
               const price = formatPrice(item.priceCents);

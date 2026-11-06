@@ -343,15 +343,17 @@ function PriceEditor({ session }: { session: Session }) {
       settingResets.length ? supabase.from("menu_settings").delete().in("key", settingResets) : null,
     ]);
     const failed = results.find((r) => r?.error);
-    setSaving(false);
     if (failed?.error) {
+      setSaving(false);
       setError(friendlyError(failed.error.message));
       return;
     }
+    const count = totalChanges;
+    await load(); // refresh saved values and history first, so the confirmation matches what's shown
     discardAll();
-    setFlash(`Saved ${totalChanges} ${totalChanges === 1 ? "change" : "changes"}. Live on the website now.`);
+    setSaving(false);
+    setFlash(`Saved ${count} ${count === 1 ? "change" : "changes"}. Live on the website now.`);
     window.setTimeout(() => setFlash(null), 4000);
-    await load();
   };
 
   const resetToDefault = (id: string) => setDraft(id, centsToInput(DEFAULT_PRICES.get(id)!));

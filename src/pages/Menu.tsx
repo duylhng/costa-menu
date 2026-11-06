@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { usePriceVersion } from "@/data/prices";
 import { Search, ShoppingBag } from "lucide-react";
 import { MENU, formatPrice, type IndexedItem } from "@/data/menu";
-import { Masthead, PriceNotice, Ticker, useDocumentTitle } from "@/components/site/Broadsheet";
+import { PageHead, PriceNotice, useDocumentTitle } from "@/components/site/Broadsheet";
 import { useOrder, useScrollSpy } from "@/components/site/hooks";
 import { ClassifiedsSection, CursorPreview, MenuActionsContext, MenuSection, flyToParcel, type MenuActions } from "./menu/Items";
 import { ItemDialog, ParcelSheet, SearchPalette } from "./menu/Overlays";
@@ -52,7 +52,6 @@ function SectionRail({ onSearch }: { onSearch: () => void }) {
                 history.replaceState(null, "", `#${c.id}`);
               }}
             >
-              <small>{c.folio}</small>
               {c.title.replace("Minimum Hot ", "")}
             </a>
           ))}
@@ -139,14 +138,12 @@ const Menu = () => {
   return (
     <MenuActionsContext.Provider value={actions}>
       <>
-        <Masthead
-          pre="Section B ·"
-          main="The"
-          accent="Menu"
-          subtitle="Everything we fry, grill and wrap, from cod and scallops to burgers, rolls and dim sims."
-        />
-        <PriceNotice />
-        <Ticker />
+        <PageHead title={<>The <em>Menu</em></>}>
+          Tap anything for details, or <b>+</b> to build your order.
+        </PageHead>
+        <div className="cm-wrap">
+          <PriceNotice />
+        </div>
         <SectionRail onSearch={() => setSearchOpen(true)} />
 
         <div className="cm-wrap">
