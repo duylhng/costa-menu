@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { ITEM_INDEX, SHOP } from "@/data/menu";
+import { usePriceVersion } from "@/data/prices";
 
 /* -------------------------------------------------------------------------- */
 /*  Reduced motion                                                             */
@@ -72,6 +73,7 @@ function loadOrder(): OrderLine[] {
 
 export function useOrder() {
   const [lines, dispatch] = useReducer(orderReducer, undefined, loadOrder);
+  const priceVersion = usePriceVersion();
 
   useEffect(() => {
     try {
@@ -89,7 +91,9 @@ export function useOrder() {
         const unitCents = item.priceCents + (option?.extraCents ?? 0);
         return { ...line, item, option, unitCents, totalCents: unitCents * line.qty };
       }),
-    [lines],
+    // Recalculate when live prices arrive, not just when the order changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lines, priceVersion],
   );
 
   const totalCents = detailed.reduce((sum, l) => sum + l.totalCents, 0);

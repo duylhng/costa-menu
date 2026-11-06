@@ -2004,3 +2004,306 @@
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   PRICE DESK (/admin)
+   ========================================================================== */
+
+.cm-admin-login {
+  max-width: 420px;
+  padding: 24px;
+  display: grid;
+  gap: 14px;
+}
+.cm-admin-login h2 {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.cm-admin-login label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.cm-admin input {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+}
+.cm-admin-login input {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  height: 46px;
+  padding: 0 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+}
+.cm-admin-error {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border: 2px solid var(--tomato);
+  border-radius: 6px;
+  color: var(--tomato);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.cm-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cm-admin__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.cm-admin__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: var(--site-nav-h);
+  z-index: 20;
+  background: var(--paper);
+}
+.cm-admin__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 220px;
+  max-width: 360px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+}
+.cm-admin__search input {
+  border: 0;
+  outline: 0;
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+}
+.cm-admin__bulk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cm-admin__bulk .cm-btn {
+  min-height: 40px;
+  padding: 0 16px;
+}
+.cm-admin__pct {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+}
+.cm-admin__pct input {
+  width: 3.2em;
+  border: 0;
+  outline: 0;
+  text-align: right;
+  font-family: var(--mono);
+  font-weight: 700;
+  background: transparent;
+}
+
+.cm-admin__group {
+  margin-top: 32px;
+}
+.cm-admin__group h3 {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--rule);
+}
+.cm-admin__group h3 small {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  margin-right: 6px;
+}
+.cm-admin__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-bottom: 1px dashed var(--ink-faint);
+  border-radius: 6px;
+}
+.cm-admin__row[data-dirty] {
+  background: color-mix(in srgb, var(--mustard) 22%, transparent);
+}
+.cm-admin__row[data-invalid] {
+  background: color-mix(in srgb, var(--tomato) 15%, transparent);
+}
+.cm-admin__name {
+  display: grid;
+  min-width: 0;
+}
+.cm-admin__name b {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.cm-admin__name small {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+.cm-admin__price {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.cm-admin__price > button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+.cm-admin__price > button:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.cm-admin__price > button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+.cm-admin__reset {
+  border-style: dashed !important;
+  margin-left: 4px;
+}
+.cm-admin__price label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: var(--paper);
+  font-family: var(--mono);
+  font-weight: 700;
+}
+.cm-admin__price input {
+  width: 4.6em;
+  border: 0;
+  outline: 0;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: right;
+  background: transparent;
+}
+.cm-admin__row[data-invalid] .cm-admin__price label {
+  border-color: var(--tomato);
+  color: var(--tomato);
+}
+.cm-admin__history td small {
+  font-family: var(--mono);
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+}
+
+.cm-admin__savebar {
+  position: fixed;
+  z-index: 45;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+  transform: translateY(110%);
+  transition: transform 0.35s var(--ease-out);
+}
+.cm-admin__savebar[data-visible="true"] {
+  transform: none;
+}
+.cm-admin__savebar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 700;
+}
+.cm-admin__savebar-inner > div {
+  display: flex;
+  gap: 10px;
+}
+.cm-admin__savebar .cm-btn {
+  min-height: 42px;
+  box-shadow: none;
+  border-color: var(--paper);
+}
+.cm-admin__savebar .cm-btn:not(.cm-btn--primary) {
+  background: transparent;
+  color: var(--paper);
+}
+
+@media (max-width: 520px) {
+  .cm-admin__row {
+    gap: 8px;
+    padding: 8px 2px;
+  }
+  .cm-admin__name b {
+    font-size: 0.98rem;
+  }
+  .cm-admin__price {
+    gap: 3px;
+  }
+  .cm-admin__price > button {
+    width: 30px;
+    height: 30px;
+  }
+  .cm-admin__price label {
+    padding: 0 6px;
+    height: 38px;
+  }
+  .cm-admin__price input {
+    width: 3.6em;
+  }
+  .cm-admin__reset {
+    margin-left: 0;
+  }
+  .cm-admin__tools {
+    position: static;
+  }
+  .cm-admin__savebar-inner {
+    font-size: 0.9rem;
+  }
+  .cm-admin__savebar .cm-btn {
+    min-height: 40px;
+    padding: 0 14px;
+  }
+}

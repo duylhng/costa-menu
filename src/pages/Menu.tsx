@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { usePriceVersion } from "@/data/prices";
 import { Search, ShoppingBag } from "lucide-react";
 import { MENU, formatPrice, type IndexedItem } from "@/data/menu";
 import { Masthead, PriceNotice, Ticker, useDocumentTitle } from "@/components/site/Broadsheet";
@@ -78,6 +79,7 @@ const Menu = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [bump, setBump] = useState(0);
   useDocumentTitle("Menu");
+  usePriceVersion(); // re-render when live prices arrive
 
   // Keyboard: ⌘K / Ctrl+K / "/" opens search.
   useEffect(() => {

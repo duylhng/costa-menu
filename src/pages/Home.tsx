@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { usePriceVersion } from "@/data/prices";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
 import { ALL_ITEMS, HERO_PHOTO, SHOP, displayName, formatPrice } from "@/data/menu";
@@ -47,6 +48,7 @@ function FavouriteCard({ id, index }: { id: string; index: number }) {
 
 const Home = () => {
   useDocumentTitle("");
+  usePriceVersion(); // re-render when live prices arrive
   const lead = useReveal<HTMLDivElement>();
   const favs = useReveal<HTMLDivElement>();
   const boxes = useReveal<HTMLDivElement>();

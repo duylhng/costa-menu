@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { Suspense, lazy, useEffect, useLayoutEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import SiteNav from "./components/site/SiteNav";
@@ -7,6 +7,9 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+
+// Loaded on demand so visitors never download the login code.
+const Admin = lazy(() => import("./pages/Admin"));
 import "./styles/broadsheet.css";
 
 /** New page → start at the top, unless the URL points at a section (e.g. /menu#snacks). */
@@ -45,6 +48,14 @@ function Shell() {
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/admin"
+            element={
+              <Suspense fallback={<p className="cm-wrap cm-fineprint" style={{ padding: "48px 0" }}>Loading…</p>}>
+                <Admin />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
