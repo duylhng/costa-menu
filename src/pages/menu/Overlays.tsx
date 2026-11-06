@@ -88,6 +88,11 @@ export function ItemDialog({ item, onClose, onAdd }: ItemDialogProps) {
                 </fieldset>
               )}
 
+              <p className="rounded-md border-2 border-dashed border-[#c9442a] px-3 py-2 text-xs leading-relaxed">
+                <b className="text-[#c9442a]">Guide price only.</b> Prices change often and may differ in store. The
+                in-store price applies.
+              </p>
+
               <div className="flex flex-wrap items-center justify-between gap-4 border-t-2 border-dashed border-[var(--ink)]/30 pt-4">
                 <Stepper value={qty} onChange={setQty} min={1} />
                 <button
@@ -99,7 +104,7 @@ export function ItemDialog({ item, onClose, onAdd }: ItemDialogProps) {
                   className="inline-flex flex-1 items-center justify-between gap-6 rounded-full border-2 border-[var(--ink)] bg-[#c9442a] px-5 py-3 font-bold text-white shadow-[4px_4px_0_var(--ink)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none sm:flex-none"
                 >
                   <span>Add to parcel</span>
-                  <span>{formatPrice(unit * qty)}</span>
+                  <span>≈ {formatPrice(unit * qty)}</span>
                 </button>
               </div>
             </div>
@@ -147,7 +152,7 @@ function orderText(order: Order) {
     const name = displayName(l.item) + (l.option ? ` (${l.option.label.toLowerCase()})` : "");
     return `${l.qty} × ${name} — ${formatPrice(l.totalCents)}`;
   });
-  return [`My order for Costa's Takeaway:`, ...lines, `Estimated total: ${formatPrice(order.totalCents)}`].join("\n");
+  return [`My order for Costa's Takeaway:`, ...lines, `Guide total: ${formatPrice(order.totalCents)} (prices may have changed, in-store price applies)`].join("\n");
 }
 
 export function ParcelSheet({ order, open, onOpenChange }: { order: Order; open: boolean; onOpenChange: (o: boolean) => void }) {
@@ -229,12 +234,13 @@ export function ParcelSheet({ order, open, onOpenChange }: { order: Order; open:
 
         <div className="border-t-2 border-[var(--ink)] px-6 pb-6 pt-4">
           <div className="flex items-baseline justify-between">
-            <span className="text-xs uppercase tracking-[0.2em] opacity-60">Estimated total</span>
+            <span className="text-xs uppercase tracking-[0.2em] opacity-60">Guide total</span>
             <span className="cm-receipt__head text-4xl font-black tabular-nums">{formatPrice(order.totalCents)}</span>
           </div>
-          <p className="mt-2 text-[0.7rem] leading-relaxed opacity-60">
-            This is a planning list, not an online order. Call us and read it out — we'll have it hot and wrapped when you
-            arrive. Pickup only. Prices subject to change.
+          <p className="mt-3 rounded-md border-2 border-dashed border-[#c9442a] px-3 py-2 text-[0.72rem] leading-relaxed">
+            <b className="text-[#c9442a]">Prices are a guide only</b> and change often, so your total in store may be
+            different. The in-store price applies. This is a planning list, not an online order: call us and read it out.
+            Pickup only.
           </p>
           <a
             href={SHOP.phoneHref}

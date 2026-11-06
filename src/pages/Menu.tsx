@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { Phone, Search, ShoppingBag, Star } from "lucide-react";
+import { AlertTriangle, Phone, Search, ShoppingBag, Star } from "lucide-react";
 import { ALL_ITEMS, MENU, SHOP, displayName, formatPrice, type IndexedItem } from "@/data/menu";
 import FryerCam from "./menu/FryerCam";
 import { ClassifiedsSection, CursorPreview, MenuActionsContext, MenuSection, flyToParcel, type MenuActions } from "./menu/Items";
@@ -87,6 +87,29 @@ function Masthead() {
         </a>
       </div>
     </header>
+  );
+}
+
+function PriceNotice() {
+  return (
+    <aside className="cm-wrap" aria-labelledby="cm-notice-title">
+      <div className="cm-notice" role="note">
+        <div className="cm-notice__badge" aria-hidden="true">
+          <AlertTriangle size={28} strokeWidth={2.4} />
+        </div>
+        <div className="cm-notice__body">
+          <div className="cm-kicker cm-notice__kicker">Important notice to all readers</div>
+          <h2 id="cm-notice-title" className="cm-notice__title">
+            Prices on this page are a guide only.
+          </h2>
+          <p className="cm-notice__text">
+            Our prices change regularly and this website is <strong>not always up to date</strong>. The price at the counter
+            is the price you pay, so if it's different from what you see here, the in-store price applies. Please call{" "}
+            <a href={SHOP.phoneHref}>{SHOP.phoneDisplay}</a> to check today's prices.
+          </p>
+        </div>
+      </div>
+    </aside>
   );
 }
 
@@ -212,8 +235,8 @@ function Colophon() {
           <div className="cm-kicker">The fine print</div>
           <h4>Corrections &amp; clarifications</h4>
           <p className="cm-fineprint">
-            Prices are subject to change; please call to confirm current pricing. No newspapers were harmed in the making of
-            this menu, though several potatoes were.
+            All prices shown are a guide only and change often. In-store prices always apply. Please call to confirm
+            current pricing. No newspapers were harmed in the making of this menu, though several potatoes were.
           </p>
         </div>
       </div>
@@ -305,6 +328,7 @@ const Menu = () => {
     <MenuActionsContext.Provider value={actions}>
       <div ref={rootRef} className="cm">
         <Masthead />
+        <PriceNotice />
         <Ticker />
         <SectionRail onSearch={() => setSearchOpen(true)} />
 
@@ -332,7 +356,7 @@ const Menu = () => {
             <span className="cm-parcel-btn__count">{order.count}</span>
           </span>
           <span>Your parcel</span>
-          <span className="cm-mono">{formatPrice(order.totalCents)}</span>
+          <span className="cm-mono">≈ {formatPrice(order.totalCents)}</span>
         </button>
 
         <CursorPreview image={previewImage} />
