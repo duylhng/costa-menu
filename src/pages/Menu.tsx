@@ -1,136 +1,13 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { AlertTriangle, Phone, Search, ShoppingBag, Star } from "lucide-react";
-import { ALL_ITEMS, MENU, SHOP, displayName, formatPrice, type IndexedItem } from "@/data/menu";
-import FryerCam from "./menu/FryerCam";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Search, ShoppingBag } from "lucide-react";
+import { MENU, formatPrice, type IndexedItem } from "@/data/menu";
+import { Masthead, PriceNotice, Ticker, useDocumentTitle } from "@/components/site/Broadsheet";
+import { useOrder, useScrollSpy } from "@/components/site/hooks";
 import { ClassifiedsSection, CursorPreview, MenuActionsContext, MenuSection, flyToParcel, type MenuActions } from "./menu/Items";
 import { ItemDialog, ParcelSheet, SearchPalette } from "./menu/Overlays";
-import { useOpenStatus, useOrder, useScrollSpy } from "./menu/hooks";
-import "./menu/menu.css";
 
 const MAIN_SECTIONS = MENU.filter((c) => c.layout !== "compact");
 const SIDE_SECTIONS = MENU.filter((c) => c.layout === "compact");
-
-/* -------------------------------------------------------------------------- */
-/*  Masthead                                                                   */
-/* -------------------------------------------------------------------------- */
-
-function SplitLetters({ text, offset = 0 }: { text: string; offset?: number }) {
-  return (
-    <>
-      {Array.from(text).map((ch, i) => (
-        <span key={i} className="cm-letter" style={{ "--i": i + offset } as CSSProperties}>
-          {ch === " " ? " " : ch}
-        </span>
-      ))}
-    </>
-  );
-}
-
-function Masthead() {
-  const status = useOpenStatus();
-  const today = new Date();
-  const dateline = new Intl.DateTimeFormat("en-AU", {
-    timeZone: SHOP.timeZone,
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(today);
-  const start = new Date(today.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((today.getTime() - start.getTime()) / 86_400_000);
-
-  return (
-    <header className="cm-masthead cm-wrap">
-      <hr className="cm-rule" />
-      <div className="cm-dateline cm-kicker">
-        <span>
-          Vol. {today.getFullYear() - 2000} · No. {dayOfYear}
-        </span>
-        <span>{dateline}</span>
-        <span>Woodridge, QLD · Price: free (the food isn't)</span>
-      </div>
-      <hr className="cm-rule cm-rule--double" />
-
-      <div className="cm-title-row">
-        <div>
-          <h1 className="cm-title" aria-label="The Daily Catch">
-            <span style={{ display: "block", fontSize: "0.38em", letterSpacing: "-0.02em", marginBottom: "0.08em" }}>
-              <SplitLetters text="The" />
-            </span>
-            <SplitLetters text="Daily " offset={3} />
-            <em>
-              <SplitLetters text="Catch" offset={9} />
-            </em>
-          </h1>
-          <p className="cm-subtitle">
-            Costa's Takeaway — fish, chips &amp; everything golden, cooked to order and wrapped while it's hot.
-          </p>
-        </div>
-        <FryerCam open={status.open} />
-      </div>
-
-      <hr className="cm-rule" />
-      <div className="cm-status" role="status">
-        <span className="cm-status__pill" data-open={status.open}>
-          <span className="cm-status__dot" />
-          {status.headline}
-        </span>
-        <span className="cm-status__detail">{status.detail}</span>
-        {status.progress !== null && (
-          <span className="cm-status__bar" aria-hidden="true" title="How far through today's trading we are">
-            <span style={{ transform: `scaleX(${status.progress})` }} />
-          </span>
-        )}
-        <a className="cm-status__phone" href={SHOP.phoneHref}>
-          <Phone size={14} style={{ display: "inline", marginRight: 6, verticalAlign: "-2px" }} />
-          {SHOP.phoneDisplay}
-        </a>
-      </div>
-    </header>
-  );
-}
-
-function PriceNotice() {
-  return (
-    <aside className="cm-wrap" aria-labelledby="cm-notice-title">
-      <div className="cm-notice" role="note">
-        <div className="cm-notice__badge" aria-hidden="true">
-          <AlertTriangle size={28} strokeWidth={2.4} />
-        </div>
-        <div className="cm-notice__body">
-          <div className="cm-kicker cm-notice__kicker">Important notice to all readers</div>
-          <h2 id="cm-notice-title" className="cm-notice__title">
-            Prices on this page are a guide only.
-          </h2>
-          <p className="cm-notice__text">
-            Our prices change regularly and this website is <strong>not always up to date</strong>. The price at the counter
-            is the price you pay, so if it's different from what you see here, the in-store price applies. Please call{" "}
-            <a href={SHOP.phoneHref}>{SHOP.phoneDisplay}</a> to check today's prices.
-          </p>
-        </div>
-      </div>
-    </aside>
-  );
-}
-
-function Ticker() {
-  const items = ALL_ITEMS.filter((i) => i.popular);
-  const run = (hidden: boolean) =>
-    items.map((item) => (
-      <span key={`${hidden}-${item.id}`} className="cm-ticker__item" aria-hidden={hidden || undefined}>
-        <Star size={11} className="cm-ticker__star" fill="currentColor" strokeWidth={0} />
-        {displayName(item)} <b>{item.description && /for \$/.test(item.description) ? item.description : formatPrice(item.priceCents)}</b>
-      </span>
-    ));
-  return (
-    <div className="cm-ticker" role="marquee" aria-label="Local favourites">
-      <div className="cm-ticker__track">
-        {run(false)}
-        {run(true)}
-      </div>
-    </div>
-  );
-}
 
 /* -------------------------------------------------------------------------- */
 /*  Sticky section rail with a springy indicator blob                          */
@@ -190,61 +67,6 @@ function SectionRail({ onSearch }: { onSearch: () => void }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Colophon (hours, address, fine print)                                      */
-/* -------------------------------------------------------------------------- */
-
-function Colophon() {
-  const todayIdx = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(
-    new Intl.DateTimeFormat("en-US", { timeZone: SHOP.timeZone, weekday: "short" }).format(new Date()),
-  );
-  const rows: [string, number[], string][] = [
-    ["Monday", [1], "12:00pm – 7:30pm"],
-    ["Tuesday – Friday", [2, 3, 4, 5], "10:30am – 7:30pm"],
-    ["Saturday", [6], "10:30am – 7:00pm"],
-    ["Sunday", [0], "Closed"],
-  ];
-  return (
-    <footer className="cm-colophon cm-wrap">
-      <div className="cm-colophon__grid">
-        <div>
-          <div className="cm-kicker">Trading hours</div>
-          <h4>When the fryers are on</h4>
-          <table className="cm-hours">
-            <tbody>
-              {rows.map(([label, days, hours]) => (
-                <tr key={label} data-today={days.includes(todayIdx)}>
-                  <td>{label}</td>
-                  <td>{hours}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <div className="cm-kicker">Where to find us</div>
-          <h4>Shop 3, 153 Smith Rd</h4>
-          <p className="cm-fineprint">
-            Woodridge, QLD 4114. Pickup only — call ahead on{" "}
-            <a href={SHOP.phoneHref} style={{ color: "var(--tomato)", fontWeight: 700, fontStyle: "normal" }}>
-              {SHOP.phoneDisplay}
-            </a>{" "}
-            and we'll have it wrapped and ready when you arrive.
-          </p>
-        </div>
-        <div>
-          <div className="cm-kicker">The fine print</div>
-          <h4>Corrections &amp; clarifications</h4>
-          <p className="cm-fineprint">
-            All prices shown are a guide only and change often. In-store prices always apply. Please call to confirm
-            current pricing. No newspapers were harmed in the making of this menu, though several potatoes were.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
 /*  Page                                                                       */
 /* -------------------------------------------------------------------------- */
 
@@ -255,19 +77,7 @@ const Menu = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [bump, setBump] = useState(0);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  // Measure the site's own sticky nav so our rail docks exactly beneath it.
-  useLayoutEffect(() => {
-    const nav = document.querySelector<HTMLElement>("body > #root nav.sticky, nav.sticky");
-    const root = rootRef.current;
-    if (!nav || !root) return;
-    const set = () => root.style.setProperty("--site-nav-h", `${nav.getBoundingClientRect().height}px`);
-    set();
-    const ro = new ResizeObserver(set);
-    ro.observe(nav);
-    return () => ro.disconnect();
-  }, []);
+  useDocumentTitle("Menu");
 
   // Keyboard: ⌘K / Ctrl+K / "/" opens search.
   useEffect(() => {
@@ -299,7 +109,7 @@ const Menu = () => {
           return;
         }
         order.add(item.id);
-        flyToParcel(from, item.image);
+        flyToParcel(from, item.thumb);
         window.setTimeout(celebrate, 700);
       },
       inspect: (item) => {
@@ -314,7 +124,7 @@ const Menu = () => {
 
   const addFromDialog = (item: IndexedItem, optionId: string | undefined, qty: number, from: HTMLElement) => {
     for (let i = 0; i < qty; i++) order.add(item.id, optionId);
-    flyToParcel(from, item.image);
+    flyToParcel(from, item.thumb);
     window.setTimeout(celebrate, 700);
   };
 
@@ -326,20 +136,23 @@ const Menu = () => {
 
   return (
     <MenuActionsContext.Provider value={actions}>
-      <div ref={rootRef} className="cm">
-        <Masthead />
+      <>
+        <Masthead
+          pre="Section B ·"
+          main="The"
+          accent="Menu"
+          subtitle="Everything we fry, grill and wrap, from cod and scallops to burgers, rolls and dim sims."
+        />
         <PriceNotice />
         <Ticker />
         <SectionRail onSearch={() => setSearchOpen(true)} />
 
-        <main className="cm-wrap">
+        <div className="cm-wrap">
           {MAIN_SECTIONS.map((category) => (
             <MenuSection key={category.id} category={category} />
           ))}
           <ClassifiedsSection categories={SIDE_SECTIONS} />
-        </main>
-
-        <Colophon />
+        </div>
 
         <button
           id="cm-parcel-button"
@@ -360,7 +173,7 @@ const Menu = () => {
         </button>
 
         <CursorPreview image={previewImage} />
-      </div>
+      </>
 
       <ItemDialog item={inspecting} onClose={() => setInspecting(null)} onAdd={addFromDialog} />
       <ParcelSheet order={order} open={parcelOpen} onOpenChange={setParcelOpen} />

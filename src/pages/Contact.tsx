@@ -1,84 +1,107 @@
-import { Card } from "@/components/ui/card";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { useState, type CSSProperties } from "react";
+import { ExternalLink, MapPin, Navigation, Phone, ShoppingBag } from "lucide-react";
+import { SHOP } from "@/data/menu";
+import { HoursTable, PageHead, useDocumentTitle } from "@/components/site/Broadsheet";
+import { useReveal } from "@/components/site/hooks";
+
+const MAP_QUERY = encodeURIComponent("153 Smith Rd, Woodridge QLD 4114");
+const MAP_EMBED = `https://maps.google.com/maps?q=${MAP_QUERY}&z=16&output=embed`;
+const DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${MAP_QUERY}`;
 
 const Contact = () => {
+  useDocumentTitle("Find us");
+  const reveal = useReveal<HTMLDivElement>();
+  // The map iframe is heavy (≈1MB of Google scripts), so it only loads when asked for.
+  const [mapOn, setMapOn] = useState(false);
+
   return (
-    <div className="min-h-screen py-16 px-4">
-      <div className="container mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Find Us</h1>
-          <p className="text-xl text-muted-foreground">Visit us or call ahead for pickup</p>
-        </div>
+    <>
+      <PageHead folio="C" kicker="Section C · Directions" title={<>Find <em>us</em></>}>
+        Shop 3 on Smith Road, Woodridge. Call ahead and your order will be hot and wrapped when you arrive.
+      </PageHead>
 
-        {/* Contact Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* Address */}
-          <Card className="p-8 text-center hover:shadow-lg transition-shadow">
-            <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-3">Our Location</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Shop 3, 153 Smith Rd
-              <br />
-              Woodridge, QLD 4114
-              <br />
-              Australia
-            </p>
-          </Card>
-
-          {/* Phone */}
-          <Card className="p-8 text-center hover:shadow-lg transition-shadow">
-            <Phone className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-3">Call to Order</h3>
-            <a
-              href="tel:0405353467"
-              className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors block"
-            >
-              0405 353 467
-            </a>
-            <p className="text-muted-foreground mt-2">Available during opening hours</p>
-          </Card>
-
-          {/* Hours */}
-          <Card className="p-8 text-center hover:shadow-lg transition-shadow">
-            <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-3">Opening Hours</h3>
-            <div className="text-muted-foreground space-y-1">
-              <p>Mon: 12pm - 7:30pm</p>
-              <p>Tue-Fri: 10:30am - 7:30pm</p>
-              <p>Sat: 10:30am - 7pm</p>
-              <p>Sun: Closed</p>
+      <div className="cm-wrap">
+        <section className="cm-section" aria-label="Location and contact details">
+          <div ref={reveal} className="cm-findus cm-reveal">
+            <div className="cm-map" style={{ "--i": 0 } as CSSProperties}>
+              {mapOn ? (
+                <iframe
+                  title="Map showing Costa's Takeaway, 153 Smith Rd, Woodridge"
+                  src={MAP_EMBED}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              ) : (
+                <button type="button" className="cm-map__placeholder" onClick={() => setMapOn(true)}>
+                  <span className="cm-map__pin" aria-hidden="true">
+                    <MapPin size={30} />
+                  </span>
+                  <span className="cm-map__label">
+                    <b>153 Smith Rd, Woodridge</b>
+                    <span className="cm-kicker">Tap to load the map</span>
+                  </span>
+                </button>
+              )}
             </div>
-          </Card>
-        </div>
 
-        {/* Map */}
-        <Card className="overflow-hidden">
-          <div className="aspect-video w-full">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3542.5849877!2d153.1061921!3d-27.6227986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915071f09a847b%3A0x1e0d7c8c0e0a4d5!2s153%20Smith%20Rd%2C%20Woodridge%20QLD%204114!5e0!3m2!1sen!2sau!4v1234567890"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <div className="cm-findus__details">
+              <div className="cm-classified cm-box" style={{ "--i": 1 } as CSSProperties}>
+                <div className="cm-kicker">C1 · Address</div>
+                <h3>Shop 3, 153 Smith Rd</h3>
+                <p className="cm-fineprint" style={{ fontStyle: "normal" }}>
+                  Woodridge, QLD 4114
+                  <br />
+                  Australia
+                </p>
+                <div className="cm-lead__actions">
+                  <a href={DIRECTIONS} target="_blank" rel="noreferrer" className="cm-btn cm-btn--primary">
+                    <Navigation size={16} /> Directions
+                  </a>
+                  <a href={`https://maps.google.com/?q=${MAP_QUERY}`} target="_blank" rel="noreferrer" className="cm-btn">
+                    Open in Maps <ExternalLink size={14} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="cm-classified cm-box" style={{ "--i": 2 } as CSSProperties}>
+                <div className="cm-kicker">C2 · Orders</div>
+                <h3>Call to order</h3>
+                <a href={SHOP.phoneHref} className="cm-bigphone">
+                  <Phone size={22} /> {SHOP.phoneDisplay}
+                </a>
+                <p className="cm-fineprint">Available during opening hours.</p>
+              </div>
+
+              <div className="cm-classified cm-box" style={{ "--i": 3 } as CSSProperties}>
+                <div className="cm-kicker">C3 · Hours</div>
+                <h3>Opening hours</h3>
+                <HoursTable />
+              </div>
+            </div>
           </div>
-        </Card>
+        </section>
 
-        {/* Additional Info */}
-        <div className="mt-12 text-center">
-          <Card className="p-8 bg-secondary/50">
-            <h3 className="text-2xl font-bold mb-4">Pickup Only</h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We currently offer takeaway pickup service. Call ahead to place your order and we'll have it ready when
-              you arrive!
-            </p>
-          </Card>
-        </div>
+        <aside className="cm-section" aria-labelledby="pickup-title">
+          <div className="cm-notice cm-notice--ink">
+            <div className="cm-notice__badge" aria-hidden="true">
+              <ShoppingBag size={26} />
+            </div>
+            <div>
+              <div className="cm-kicker cm-notice__kicker">Service notice</div>
+              <h2 id="pickup-title" className="cm-notice__title">
+                Pickup only.
+              </h2>
+              <p className="cm-notice__text">
+                We don't deliver and we don't take online orders. Call{" "}
+                <a href={SHOP.phoneHref}>{SHOP.phoneDisplay}</a>, tell us what you'd like, and we'll have it ready at the
+                counter.
+              </p>
+            </div>
+          </div>
+        </aside>
       </div>
-    </div>
+    </>
   );
 };
 

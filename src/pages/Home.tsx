@@ -1,104 +1,163 @@
+import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Phone, Clock } from "lucide-react";
-import heroImage from "@/assets/hero-fish-chips.jpg";
+import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
+import { ALL_ITEMS, HERO_PHOTO, SHOP, displayName, formatPrice } from "@/data/menu";
+import { Masthead, PriceNotice, Ticker, useDocumentTitle } from "@/components/site/Broadsheet";
+import { useReveal, useTilt } from "@/components/site/hooks";
+
+/** Six of the most-ordered items, picked across categories so the front page isn't all burgers. */
+const FAVOURITES = ["seafood-basket", "cod", "calamari-rings", "potato-scallops", "steak-burger-lot", "special-for-two"]
+  .map((id) => ALL_ITEMS.find((i) => i.id === id))
+  .filter((i): i is NonNullable<typeof i> => Boolean(i));
+
+function FavouriteCard({ id, index }: { id: string; index: number }) {
+  const item = FAVOURITES.find((f) => f.id === id)!;
+  const ref = useTilt<HTMLAnchorElement>(7);
+  return (
+    <Link
+      ref={ref}
+      to={`/menu#${item.category.id}`}
+      className="cm-card cm-tilt"
+      style={{ "--i": index } as CSSProperties}
+    >
+      <span className="cm-tilt__glare" />
+      <div className="cm-card__media cm-halftone">
+        <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
+        <span className="cm-chip">
+          <Star size={10} fill="currentColor" strokeWidth={0} /> Favourite
+        </span>
+      </div>
+      <div className="cm-card__body">
+        <div>
+          <div className="cm-kicker" style={{ marginBottom: 4 }}>
+            {item.category.title}
+          </div>
+          <h3 className="cm-card__name">{displayName(item)}</h3>
+          <span className="cm-price cm-card__price">
+            {formatPrice(item.priceCents)} <small className="cm-guide">guide</small>
+          </span>
+        </div>
+        <span className="cm-add" aria-hidden="true">
+          <ArrowRight size={18} strokeWidth={2.5} />
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 const Home = () => {
+  useDocumentTitle("");
+  const lead = useReveal<HTMLDivElement>();
+  const favs = useReveal<HTMLDivElement>();
+  const boxes = useReveal<HTMLDivElement>();
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }}>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-background" />
-        </div>
+    <>
+      <Masthead
+        pre="The"
+        main="Daily"
+        accent="Catch"
+        subtitle="Costa's Takeaway: fish, chips & everything golden, cooked to order and wrapped while it's hot."
+      />
+      <Ticker />
 
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
-            Fresh Fish & Chips,
-            <br />
-            Cooked to Perfection
-          </h1>
-          <p className="text-xl md:text-2xl text-white/95 mb-8 drop-shadow">
-            Traditional fish and chips, made fresh daily
-          </p>
-          <Link to="/menu">
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              View Our Menu
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <div className="cm-wrap">
+        {/* ---------------------------------------------------------------- Lead story */}
+        <section className="cm-section" aria-labelledby="lead-title">
+          <div ref={lead} className="cm-lead cm-reveal">
+            <figure className="cm-lead__figure">
+              <div className="cm-lead__photo cm-halftone">
+                <img src={HERO_PHOTO} alt="Battered fish and golden chips" fetchPriority="high" decoding="async" />
+              </div>
+              <figcaption className="cm-kicker">Pictured: the house special, battered fish &amp; chips. Photo: our kitchen.</figcaption>
+            </figure>
 
-      {/* Info Section */}
-      <section className="py-16 px-4 bg-secondary/30">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Opening Hours */}
-            <div className="bg-card p-8 rounded-xl shadow-sm border border-border">
-              <div className="flex items-center gap-3 mb-4">
-                <Clock className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold">Opening Hours</h2>
+            <article className="cm-lead__story">
+              <div className="cm-kicker cm-notice__kicker">Lead story · Woodridge</div>
+              <h2 id="lead-title" className="cm-lead__title">
+                Fish &amp; chips, cooked to order, <em>wrapped while it's hot.</em>
+              </h2>
+              <div className="cm-lead__body">
+                <p>
+                  Every order at Costa's goes into the fryer when you ask for it, not before. Cod, hoki, snapper and
+                  barramundi, battered, crumbed or grilled. Then scallops, calamari, prawn cutlets, burgers, hot rolls and
+                  all the classics alongside.
+                </p>
+                <p>
+                  Ring ahead and tell us what you're after. We'll have it hot and wrapped at the counter when you walk in.
+                  Pickup only, from Shop 3 on Smith Road.
+                </p>
               </div>
-              <div className="space-y-2 text-foreground/80">
-                <div className="flex justify-between">
-                  <span>Monday</span>
-                  <span className="font-medium">12:00pm - 7:30pm</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Tuesday - Friday</span>
-                  <span className="font-medium">10:30am - 7:30pm</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span className="font-medium">10:30am - 7:00pm</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span className="font-medium">Closed</span>
-                </div>
+              <div className="cm-lead__actions">
+                <Link to="/menu" className="cm-btn cm-btn--primary">
+                  Read the menu <ArrowRight size={18} />
+                </Link>
+                <a href={SHOP.phoneHref} className="cm-btn">
+                  <Phone size={16} /> {SHOP.phoneDisplay}
+                </a>
               </div>
+            </article>
+          </div>
+        </section>
+
+        {/* ---------------------------------------------------------------- Favourites */}
+        <section className="cm-section" aria-labelledby="favs-title">
+          <header className="cm-section__head">
+            <span className="cm-section__folio" aria-hidden="true">
+              A2
+            </span>
+            <div>
+              <div className="cm-kicker">As voted by the queue</div>
+              <h2 id="favs-title" className="cm-section__title">
+                Readers' favourites
+              </h2>
             </div>
+            <Link to="/menu" className="cm-section__count cm-inline-link">
+              Full menu →
+            </Link>
+          </header>
+          <div ref={favs} className="cm-gallery cm-gallery--3 cm-reveal">
+            {FAVOURITES.map((item, i) => (
+              <FavouriteCard key={item.id} id={item.id} index={i} />
+            ))}
+          </div>
+          <PriceNotice compact />
+        </section>
 
-            {/* Contact */}
-            <div className="bg-card p-8 rounded-xl shadow-sm border border-border">
-              <div className="flex items-center gap-3 mb-4">
-                <Phone className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold">Call to Order</h2>
-              </div>
-              <a
-                href="tel:0405353467"
-                className="text-3xl font-bold text-primary hover:text-primary/80 transition-colors"
-              >
-                0405 353 467
+        {/* ---------------------------------------------------------------- Info boxes */}
+        <section className="cm-section" aria-label="Opening hours and contact">
+          <div ref={boxes} className="cm-classifieds cm-reveal">
+            <div className="cm-classified" style={{ "--i": 0 } as CSSProperties}>
+              <div className="cm-kicker">A3 · Service</div>
+              <h3>Pickup only</h3>
+              <p className="cm-fineprint">
+                No delivery and no online ordering. Open six days, closed Sundays. Full hours are at the bottom of every
+                page.
+              </p>
+            </div>
+            <div className="cm-classified" style={{ "--i": 1 } as CSSProperties}>
+              <div className="cm-kicker">A4 · Orders</div>
+              <h3>Call ahead</h3>
+              <a href={SHOP.phoneHref} className="cm-bigphone">
+                {SHOP.phoneDisplay}
               </a>
-              <p className="mt-4 text-foreground/70">Call us to place your order for pickup</p>
+              <p className="cm-fineprint">Tell us your order and pick it up hot. We don't do delivery.</p>
+            </div>
+            <div className="cm-classified" style={{ "--i": 2 } as CSSProperties}>
+              <div className="cm-kicker">A5 · Directions</div>
+              <h3>Find us</h3>
+              <p className="cm-fineprint" style={{ fontStyle: "normal" }}>
+                <MapPin size={15} style={{ display: "inline", verticalAlign: "-2px", marginRight: 6 }} />
+                {SHOP.address}
+              </p>
+              <Link to="/contact" className="cm-btn" style={{ marginTop: 12 }}>
+                Map &amp; directions <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 text-center">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl font-bold mb-6">Discover Our Fresh Seafood Menu</h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            From classic fish and chips to delicious seafood favourites, all cooked fresh to order
-          </p>
-          <Link to="/menu">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6 rounded-full transition-all duration-300"
-            >
-              Explore Menu
-            </Button>
-          </Link>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 

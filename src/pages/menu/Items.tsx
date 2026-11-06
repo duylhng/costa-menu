@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
 import { Plus, Star, UtensilsCrossed } from "lucide-react";
 import { formatPrice, type IndexedItem, type MenuCategory } from "@/data/menu";
-import { useReveal, useTilt } from "./hooks";
+import { useReveal, useTilt } from "@/components/site/hooks";
 
 /* -------------------------------------------------------------------------- */
 /*  Page-wide context so every item can add to the parcel / open the sheet     */
@@ -205,7 +205,7 @@ function LedgerRow({ item, index, showThumb = true }: { item: IndexedItem; index
     >
       {showThumb &&
         (item.image ? (
-          <img className="cm-row__thumb" src={item.image} alt="" loading="lazy" decoding="async" />
+          <img className="cm-row__thumb" src={item.thumb} alt="" loading="lazy" decoding="async" />
         ) : (
           <span className="cm-row__thumb cm-row__thumb--empty">
             <UtensilsCrossed size={18} />

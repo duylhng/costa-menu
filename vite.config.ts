@@ -9,6 +9,10 @@ export default defineConfig(() => ({
     port: 8080,
   },
   plugins: [react()],
+  build: {
+    // Keep thumbnails as separate, lazily loaded files instead of base64 inside the JS bundle.
+    assetsInlineLimit: 0,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -11,7 +11,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { ALL_ITEMS, MENU, SHOP, displayName, formatPrice, type IndexedItem } from "@/data/menu";
-import type { Order } from "./hooks";
+import type { Order } from "@/components/site/hooks";
 
 /* ========================================================================== */
 /*  Item dialog                                                                */
@@ -193,7 +193,7 @@ export function ParcelSheet({ order, open, onOpenChange }: { order: Order; open:
               {order.lines.map((l) => (
                 <li key={l.key} className="flex items-center gap-3 border-b border-dashed border-[var(--ink)]/25 py-3">
                   {l.item.image ? (
-                    <img src={l.item.image} alt="" className="h-11 w-11 flex-shrink-0 rounded-full border-2 border-[var(--ink)] object-cover" />
+                    <img src={l.item.thumb} alt="" className="h-11 w-11 flex-shrink-0 rounded-full border-2 border-[var(--ink)] object-cover" />
                   ) : (
                     <span className="h-11 w-11 flex-shrink-0 rounded-full border-2 border-[var(--ink)] bg-[#e2a12f]" />
                   )}
@@ -310,7 +310,7 @@ export function SearchPalette({
                   className="gap-3"
                 >
                   {item.image ? (
-                    <img src={item.image} alt="" className="h-9 w-9 rounded-full object-cover" />
+                    <img src={item.thumb} alt="" className="h-9 w-9 rounded-full object-cover" />
                   ) : (
                     <span className="grid h-9 w-9 place-items-center rounded-full bg-muted">
                       <Search size={14} />

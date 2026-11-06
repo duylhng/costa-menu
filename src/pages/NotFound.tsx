@@ -1,23 +1,36 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { useDocumentTitle } from "@/components/site/Broadsheet";
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
+  useDocumentTitle("Page not found");
+  const { pathname } = useLocation();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
+    <section className="cm-wrap cm-404">
+      <hr className="cm-rule cm-rule--double" />
+      <div className="cm-kicker cm-notice__kicker" style={{ marginTop: 24 }}>
+        Stop the presses
       </div>
-    </div>
+      <h1 className="cm-404__num" aria-label="Error 404">
+        404
+      </h1>
+      <h2 className="cm-404__title">
+        This page has been <em>recalled.</em>
+      </h2>
+      <p className="cm-subtitle">
+        We couldn't find <code className="cm-mono">{pathname}</code>. It may have been eaten. The chips, however, are exactly
+        where you left them.
+      </p>
+      <div className="cm-lead__actions">
+        <Link to="/" className="cm-btn cm-btn--primary">
+          Back to the front page <ArrowRight size={18} />
+        </Link>
+        <Link to="/menu" className="cm-btn">
+          Read the menu
+        </Link>
+      </div>
+    </section>
   );
 };
 
