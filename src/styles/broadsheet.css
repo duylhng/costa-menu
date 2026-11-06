@@ -2612,3 +2612,61 @@
     --size: 34px;
   }
 }
+
+/* Price notice: medium size, headline + one sentence */
+.cm-notice-strip {
+  gap: 16px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-width: 2.5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 var(--tomato);
+}
+.cm-notice-strip__icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--tomato);
+}
+.cm-notice-strip .cm-notice-strip__icon svg {
+  color: var(--tomato-ink);
+}
+.cm-notice-strip__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.cm-notice-strip__text {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.cm-notice-strip__call {
+  font-family: var(--mono);
+}
+@media (max-width: 640px) {
+  .cm-notice-strip {
+    align-items: flex-start;
+    padding: 16px;
+    box-shadow: 4px 4px 0 var(--tomato);
+  }
+  .cm-notice-strip__icon {
+    width: 38px;
+    height: 38px;
+  }
+  .cm-notice-strip__text {
+    font-size: 0.95rem;
+  }
+}
+/* Room between the menu's price notice and the sticky section bar */
+.cm-pagehead + .cm-wrap {
+  padding-bottom: 28px;
+}

@@ -111,15 +111,21 @@ export function PageHead({ title, children }: { title: ReactNode; children?: Rea
 
 export function PriceNotice() {
   return (
-    <p className="cm-notice-strip" role="note">
-      <AlertTriangle size={18} strokeWidth={2.4} aria-hidden="true" />
-      <span>
-        <b>Prices are a guide.</b> The in-store price applies.{" "}
-        <a href={SHOP.phoneHref} className="cm-notice-strip__call">
-          Call to check
-        </a>
+    <div className="cm-notice-strip" role="note">
+      <span className="cm-notice-strip__icon" aria-hidden="true">
+        <AlertTriangle size={22} strokeWidth={2.4} />
       </span>
-    </p>
+      <div>
+        <p className="cm-notice-strip__title">Prices are a guide only.</p>
+        <p className="cm-notice-strip__text">
+          The price at the counter is the price you pay. To check a price, call{" "}
+          <a href={SHOP.phoneHref} className="cm-notice-strip__call">
+            {SHOP.phoneDisplay}
+          </a>
+          .
+        </p>
+      </div>
+    </div>
   );
 }
 
