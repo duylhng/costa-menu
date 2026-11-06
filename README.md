@@ -77,6 +77,9 @@ Each item in `src/data/menu.ts` names its photo, e.g. `...pic("cod-fish")` uses
 `photos/cod-fish.webp` and `thumbs/cod-fish.webp`. Items without a `pic(...)` (like Lasagna
 Topper) show a plain placeholder.
 
+**Generating photos with AI.** [`docs/photo-prompts.md`](docs/photo-prompts.md) has a
+ready-to-paste prompt for every item, all in one matching style, with the file name to save each as.
+
 **Taking photos.**
 
 - Shoot by a window in daylight, not under the shop's lights.
