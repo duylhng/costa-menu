@@ -83,7 +83,7 @@ Realistic food photograph for a takeaway menu. A battered fish fillet with hot c
 Save as **`cod-fish.png`**
 
 ```text
-Realistic food photograph for a takeaway menu. One golden battered cod fillet with a lemon wedge, a few hot chips beside it. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
+Realistic food photograph for a takeaway menu. One golden battered cod fillet with a lemon wedge, on its own with nothing else on the paper (no chips). Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
 ```
 
 ### Hoki
@@ -91,7 +91,7 @@ Realistic food photograph for a takeaway menu. One golden battered cod fillet wi
 Save as **`hoki-fish.png`**
 
 ```text
-Realistic food photograph for a takeaway menu. One golden crumbed hoki fillet (long, thin white fish fillet) with a lemon wedge, a few hot chips beside it. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
+Realistic food photograph for a takeaway menu. One golden crumbed hoki fillet (long, thin white fish fillet) with a lemon wedge, on its own with nothing else on the paper (no chips). Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
 ```
 
 ### Snapper
@@ -99,7 +99,7 @@ Realistic food photograph for a takeaway menu. One golden crumbed hoki fillet (l
 Save as **`snapper-fish.png`**
 
 ```text
-Realistic food photograph for a takeaway menu. One golden battered snapper fillet with a lemon wedge, a few hot chips beside it. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
+Realistic food photograph for a takeaway menu. One golden battered snapper fillet with a lemon wedge, on its own with nothing else on the paper (no chips). Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
 ```
 
 ### Barramundi
@@ -108,7 +108,7 @@ Save as **`barramundi-fish.png`**
 ⚠ Fish can be battered, crumbed or grilled; this shows one of each style across the four fish so the section has variety.
 
 ```text
-Realistic food photograph for a takeaway menu. One grilled barramundi fillet with light char marks and a lemon wedge, a few hot chips beside it. Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
+Realistic food photograph for a takeaway menu. One grilled barramundi fillet with light char marks and a lemon wedge, on its own with nothing else on the paper (no chips). Served Australian fish-and-chip-shop style on white butcher's paper on a warm cream-coloured counter. Soft natural window light from the left, 45-degree camera angle, shallow depth of field, appetising but realistic takeaway portion (not fancy restaurant plating). No text, no logos, no people, no hands. Landscape, 4:3 aspect ratio.
 ```
 
 ## Snack Deals
