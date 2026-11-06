@@ -56,11 +56,47 @@ To remove someone's access later: `delete from public.user_roles where user_id =
 Menu items and descriptions live in `src/data/menu.ts`. Prices there are stored
 in cents (e.g. `priceCents: 850` is $8.50).
 
-Photos are WebP files in two sizes with the same name: `src/assets/photos/` (about 900px wide,
-for cards) and `src/assets/thumbs/` (144px square, for the small round images). An item uses
-them with `...pic("cod-fish")`.
-
 The menu page itself is `src/pages/Menu.tsx`, with its components and styles in `src/pages/menu/`.
+
+## Menu photos
+
+The current food photos were made by Lovable's AI image generator when the site was first
+built, so they aren't photos of Costa's actual food. Replacing them with real photos is the
+single biggest improvement still to make.
+
+**Where they are.** Every photo exists in two sizes with the same file name:
+
+| Folder | Size | Used for |
+|---|---|---|
+| `src/assets/photos/` | about 900px wide, WebP | Menu cards, the item pop-up, the front-page favourites |
+| `src/assets/thumbs/` | 144×144 square, WebP | Small round images in the menu lists, search and order list |
+
+`src/assets/photos/hero-fish-chips.webp` is the large photo on the front page (1600px wide).
+
+Each item in `src/data/menu.ts` names its photo, e.g. `...pic("cod-fish")` uses
+`photos/cod-fish.webp` and `thumbs/cod-fish.webp`. Items without a `pic(...)` (like Lasagna
+Topper) show a plain placeholder.
+
+**Taking photos.**
+
+- Shoot by a window in daylight, not under the shop's lights.
+- Take each item from straight above or at about 45°, on the same plain surface (the counter
+  or butcher's paper), so the menu looks consistent.
+- Fill the frame with the food and take a few of each. Landscape works best for cards.
+
+**Swapping a photo in.** Name the photo after the one it replaces, then run:
+
+```sh
+pip install pillow
+python3 scripts/menu_photos.py ~/Downloads/cod-fish.jpg
+```
+
+That writes both sizes (resized, cropped, compressed and rotated the right way up) over the old
+files. Run `ls src/assets/photos` to see the current names. Push to `main` and the new photo is
+live in about 3 minutes.
+
+To add a photo for an item that doesn't have one, give the file a new name, run the script, and
+add `...pic("new-name")` to that item in `src/data/menu.ts`.
 
 ## Logo and brand files
 
