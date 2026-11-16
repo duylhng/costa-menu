@@ -6,6 +6,7 @@ Usage:
 
 For each photo this writes, using the photo's file name:
     src/assets/photos/<name>.webp   about 900px wide, for cards and the item pop-up
+                                    (1600px for hero-fish-chips, the large front-page photo)
     src/assets/thumbs/<name>.webp   144x144 square crop, for the small round images
 
 Name the photo after the menu item's existing photo (e.g. cod-fish.jpg) to replace it,
@@ -18,6 +19,7 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
+WIDE = {"hero-fish-chips": 1600}  # photos shown larger than a menu card
 PHOTOS = ROOT / "src/assets/photos"
 THUMBS = ROOT / "src/assets/thumbs"
 
@@ -27,7 +29,8 @@ def convert(src: Path) -> None:
     im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
 
     photo = im.copy()
-    photo.thumbnail((900, 1800), Image.LANCZOS)
+    width = WIDE.get(name, 900)
+    photo.thumbnail((width, width * 2), Image.LANCZOS)
     photo.save(PHOTOS / f"{name}.webp", quality=72, method=6)
 
     thumb = ImageOps.fit(im, (144, 144), Image.LANCZOS)

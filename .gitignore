@@ -26,3 +26,7 @@ dist-ssr
 # Python
 __pycache__/
 *.pyc
+
+# Original full-size photos: convert with scripts/menu_photos.py, never commit them
+incoming-photos/*
+!incoming-photos/README.md
