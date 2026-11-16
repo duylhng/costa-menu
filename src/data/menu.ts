@@ -213,7 +213,7 @@ export const MENU: MenuCategory[] = [
       { id: "pineapple-fritter", name: "Pineapple Fritter", description: "", priceCents: 180, ...pic("pineapple-fritter") },
       { id: "pork-sausage", name: "Pork Sausage", description: "", priceCents: 450, ...pic("pork-sausage") },
       { id: "ham-cheese-scallop", name: "Ham & Cheese Potato Scallop", description: "", priceCents: 450, ...pic("ham-cheese-scallop") },
-      { id: "lasagna-topper", name: "Lasagna Topper", description: "", priceCents: 450 },
+      { id: "lasagna-topper", name: "Lasagna Topper", description: "", priceCents: 450, ...pic("lasagna-topper") },
     ],
   },
   {
