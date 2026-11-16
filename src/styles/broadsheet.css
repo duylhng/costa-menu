@@ -129,7 +129,7 @@
 .cm-title {
   font-family: var(--serif);
   font-weight: 900;
-  font-size: clamp(3.1rem, 13vw, 10.5rem);
+  font-size: clamp(2.8rem, 11vw, 8rem);
   line-height: 0.82;
   letter-spacing: -0.045em;
   font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
@@ -144,7 +144,7 @@
 .cm-title .cm-letter {
   display: inline-block;
   opacity: 0;
-  transform: translateY(0.35em) rotate(4deg);
+  transform: translateY(0.2em);
   animation: cm-letter-in 0.9s var(--ease-out) forwards;
   animation-delay: calc(var(--i) * 38ms + 120ms);
 }
@@ -207,7 +207,6 @@
   position: absolute;
   inset: -14px;
   pointer-events: none;
-  animation: cm-spin 40s linear infinite;
 }
 .cm-fryer__ring text {
   font-family: var(--mono);
@@ -387,7 +386,7 @@
   display: inline-flex;
   gap: var(--gap);
   padding-right: var(--gap);
-  animation: cm-marquee 48s linear infinite;
+  animation: cm-marquee 75s linear infinite;
 }
 .cm-ticker:hover .cm-ticker__track {
   animation-play-state: paused;
@@ -1573,7 +1572,7 @@
   overflow: hidden;
   border: 2px solid var(--ink);
   border-radius: 6px;
-  box-shadow: 10px 10px 0 var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
   background: var(--paper-3);
 }
 .cm-lead__photo img {

@@ -4,13 +4,11 @@ import { ArrowRight, Phone } from "lucide-react";
 import { HERO_PHOTO, SHOP, displayName, formatPrice, type IndexedItem } from "@/data/menu";
 import { frontPageItems, usePriceVersion } from "@/data/prices";
 import { Masthead, PriceNotice, Ticker, useDocumentTitle } from "@/components/site/Broadsheet";
-import { useReveal, useTilt } from "@/components/site/hooks";
+import { useReveal } from "@/components/site/hooks";
 
 function FavouriteCard({ item, index }: { item: IndexedItem; index: number }) {
-  const ref = useTilt<HTMLAnchorElement>(6);
   return (
-    <Link ref={ref} to={`/menu#${item.category.id}`} className="cm-card cm-tilt" style={{ "--i": index } as CSSProperties}>
-      <span className="cm-tilt__glare" />
+    <Link to={`/menu#${item.category.id}`} className="cm-card" style={{ "--i": index } as CSSProperties}>
       <div className="cm-card__media">
         <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
       </div>
